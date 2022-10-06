@@ -3,7 +3,7 @@
         <div class="w-full mb-4 grid grid-cols-4 gap-4">
             <div
                 class="aspect-image"
-                v-for="image of images"   
+                v-for="image of images.slice(0, 4)"
             >
                 <img 
                     class="object-cover w-full h-full"
