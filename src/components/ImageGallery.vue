@@ -22,7 +22,7 @@
     </div>
   </div>
   <div :class="galleryVisibilityClass"
-       class="bg-black fixed inset-0 z-10 top-0 left-0 right-0 bottom-0 p-16 opacity-90">
+       class="bg-black fixed inset-0 z-10 top-0 left-0 right-0 bottom-0 p-16 opacity-90 overflow-y-auto overscroll-contain">
     <CloseButton @click="galleryIsOpen = false" class="mb-8"/>
     <div class="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-10 gap-4">
       <div
@@ -39,7 +39,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, type PropType, ref } from 'vue';
+import { computed, defineProps, type PropType, ref, watch } from 'vue';
 import CloseButton from './Icons/CloseButton.vue'
 
 export interface RokkaImage {
@@ -57,4 +57,11 @@ defineProps({
 const galleryIsOpen = ref(false)
 const galleryVisibilityClass = computed(() => galleryIsOpen.value ? '' : 'hidden')
 
+watch([galleryIsOpen], () => {
+  if (galleryIsOpen.value){
+    document.getElementsByTagName('body')[0].className = 'overflow-hidden'
+  } else {
+    document.getElementsByTagName('body')[0].className = ''
+  }
+})
 </script>
