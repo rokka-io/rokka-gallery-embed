@@ -22,7 +22,7 @@
     </div>
   </div>
   <div :class="galleryVisibilityClass"
-       class="bg-black fixed inset-0 z-10 top-0 left-0 right-0 bottom-0 p-16 opacity-90 overflow-y-auto overscroll-contain">
+       class="bg-black fixed inset-0 z-10 top-0 left-0 right-0 bottom-0 p-16 bg-opacity-90 overflow-y-auto overscroll-contain">
     <CloseButton @click="galleryIsOpen = false" class="mb-8"/>
     <div class="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-10 gap-4">
       <div
