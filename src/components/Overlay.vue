@@ -7,14 +7,5 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { PropType } from 'vue';
-import type RokkaImage from '@/classes/RokkaImage';
 import CloseButton from '@/components/Icons/CloseButton.vue';
-
-defineProps({
-  images: {
-    type: Array as PropType<RokkaImage[]>,
-    required: true,
-  },
-});
 </script>
