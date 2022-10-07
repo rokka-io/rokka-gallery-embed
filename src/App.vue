@@ -11,8 +11,8 @@
   </main>
 </template>
 <script lang="ts" setup>
-import HelloWorld from "./components/HelloWorld.vue";
-import ImageGallery from "./components/ImageGallery.vue";
+import HelloWorld from './components/HelloWorld.vue';
+import ImageGallery from './components/ImageGallery.vue';
 
 const images = [
   {
@@ -31,8 +31,7 @@ const images = [
     url: 'https://plus.unsplash.com/premium_photo-1661740645196-86113ed93ddd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60',
     description: 'essen',
   },
-  
-]
+];
 </script>
 <style scoped>
 header {

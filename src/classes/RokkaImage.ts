@@ -1,4 +1,4 @@
 export default interface RokkaImage {
-    url: string;
-    description: string;
+  url: string;
+  description: string;
 }
