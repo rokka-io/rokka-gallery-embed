@@ -16,20 +16,20 @@
         <p>powered by <Rokka class="inline ml-1" /></p>
       </a>
     </div>
+    <Overlay
+        :class="galleryVisibilityClass"
+        @close-overlay="galleryIsOpen = false"
+    >
+      <div class="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-10 gap-4">
+        <Image
+            v-for="(image, index) of images"
+            :key="index"
+            :image="image"
+            @click="(image) => log(image)"
+        />
+      </div>
+    </Overlay>
   </div>
-  <Overlay
-    :class="galleryVisibilityClass"
-    @close-overlay="galleryIsOpen = false"
-  >
-    <div class="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-10 gap-4">
-      <Image
-        v-for="(image, index) of images"
-        :key="index"
-        :image="image"
-        @click="(image) => log(image)"
-      />
-    </div>
-  </Overlay>
 </template>
 <script lang="ts" setup>
 import { computed, defineProps, type PropType, ref, watch } from 'vue';
