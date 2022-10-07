@@ -54,9 +54,9 @@ const galleryVisibilityClass = computed(() =>
 
 watch([galleryIsOpen], () => {
   if (galleryIsOpen.value) {
-    document.getElementsByTagName('body')[0].className = 'overflow-hidden';
+    document.getElementsByTagName('body')[0].classList.add('overflow-hidden');
   } else {
-    document.getElementsByTagName('body')[0].className = '';
+    document.getElementsByTagName('body')[0].classList.remove('overflow-hidden');
   }
 });
 </script>
