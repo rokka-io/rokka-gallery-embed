@@ -36,10 +36,10 @@ defineProps({
 })
 
 const isOverlayActive = ref(false);
-const activeImage = ref<RokkaImage | null>(null);
+const activeImage = ref<RokkaImage>();
 
 const openOverlay = () => {
-    activeImage.value = null;
+    activeImage.value = undefined;
     isOverlayActive.value = true;
 }
 

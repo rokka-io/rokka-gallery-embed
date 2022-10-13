@@ -6,9 +6,9 @@
   >
     <div class="flex flex-col w-full h-full">
       <div class="flex justify-end pb-8">
-            <Clickable @click="emit('update:modelValue', false)">
-                    <Close/>
-              </Clickable>
+        <Clickable @click="emit('update:modelValue', false)">
+          <Close/>
+        </Clickable>
       </div>
       <div class="flex-auto overflow-y-auto">
         <slot></slot>

@@ -4,7 +4,7 @@
           v-for="(image, index) of images"
           :key="index"
           :image="image"
-          @click="(image) => emit('openImage', image)"
+          @click="image => emit('openImage', image)"
       />
     </div>
 </template>

@@ -5,16 +5,16 @@
         v-for="(image, index) of images.slice(0, 4)"
         :key="index"
         :image="image"
-        @click="(image) => emit('openImage', image)"
+        @click="image => emit('openImage', image)"
       />
     </div>
     <div class="w-full flex justify-between">
       <Clickable @click="emit('openOverlay')">
         <p>Alle Fotos Anzeigen</p>
       </Clickable>
-      <a class="cursor-pointer" target="_blank" href="https://rokka.io">
+      <ExternalLink to="https://rokka.io">
         <p>powered by <Rokka class="inline ml-1" /></p>
-      </a>
+      </ExternalLink>
     </div>
   </div>
 </template>
@@ -24,6 +24,7 @@ import type RokkaImage from '@/classes/RokkaImage';
 import Image from './Base/Image.vue';
 import Rokka from './Icons/Rokka.vue';
 import Clickable from './Base/Clickable.vue';
+import ExternalLink from './Base/ExternalLink.vue';
 
 defineProps({
   images: {
