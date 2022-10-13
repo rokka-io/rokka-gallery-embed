@@ -4,7 +4,7 @@ import './style.css';
 import langs from '@/lang/langs';
 
 // TODO: Remove
-import './assets/main.css';
+import './assets/base.css';
 
 const app = createApp(App);
 app.use(langs);

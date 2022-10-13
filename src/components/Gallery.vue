@@ -1,21 +1,24 @@
 <template>
     <Teaser 
         :images="images" 
-        @open-image="setActiveImage"
-        @open-overlay="openOverlay"
+        @open-image="openImage"
+        @open-overview="openOverview"
     />
-    <Overlay v-model="isOverlayActive" >
+    <Overlay 
+        v-if="openOverlay"
+        @close="close"
+    >
         <Overview
-            v-if="!activeImage"
+            v-if="openOverlay === 'overview'"
             :images="images" 
-            @open-image="setActiveImage" 
+            @open-image="openImage" 
         />
 
         <Carousel
-            v-if="activeImage"
+            v-if="openOverlay === 'carousel'"
             :images="images"
             :image="activeImage"
-            @open-overlay="openOverlay"
+            @open-overview="openOverview"
         />
     </Overlay>
 </template>
@@ -26,6 +29,7 @@ import Teaser from "./Teaser.vue";
 import Overlay from "./Base/Overlay.vue";
 import Overview from "./Overview.vue";
 import Carousel from "./Carousel.vue";
+import { computed } from '@vue/reactivity';
 
 
 defineProps({
@@ -35,17 +39,24 @@ defineProps({
     }
 })
 
-const isOverlayActive = ref(false);
+
 const activeImage = ref<RokkaImage>();
 
-const openOverlay = () => {
-    activeImage.value = undefined;
-    isOverlayActive.value = true;
+const isOverlayActive = computed({
+    set: (v) => !v ? openOverlay.value = null : null,
+    get: () => openOverlay.value !== null
+});
+const openOverlay = ref<'overview'|'carousel'|null>();
+
+const close = () => openOverlay.value = null;
+
+const openOverview = () => {
+    openOverlay.value = 'overview';
 }
 
-const setActiveImage = (image: RokkaImage) => {
+const openImage = (image: RokkaImage) => {
     activeImage.value = image;
-    isOverlayActive.value = true;
+    openOverlay.value = 'carousel';
 }
 
 </script>

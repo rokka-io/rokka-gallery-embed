@@ -9,11 +9,11 @@
       />
     </div>
     <div class="w-full flex justify-between">
-      <Clickable @click="emit('openOverlay')">
-        <p>Alle Fotos Anzeigen</p>
+      <Clickable @click="emit('openOverview')">
+        <p>{{ $t('teaser.openOverview') }}</p>
       </Clickable>
       <ExternalLink to="https://rokka.io">
-        <p>powered by <Rokka class="inline ml-1" /></p>
+        <p>{{ $t('teaser.poweredBy') }}<Rokka class="inline ml-2" /></p>
       </ExternalLink>
     </div>
   </div>
@@ -33,5 +33,5 @@ defineProps({
   },
 });
 
-const emit = defineEmits(['openImage', 'openOverlay'])
+const emit = defineEmits(['openImage', 'openOverview'])
 </script>

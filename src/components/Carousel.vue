@@ -7,8 +7,8 @@
         </div>
         <div class="flex-auto flex flex-col h-full">
             <div class="mb-4">
-                <Clickable @click="emit('openOverlay')">
-                    <p><Back class="inline mr-2"/>Übersicht</p>
+                <Clickable @click="emit('openOverview')">
+                    <p class="text-white"><Back class="inline mr-2"/>{{ $t('gallery.openOverview') }}</p>
                 </Clickable>
             </div>
             <InnerCarousel
@@ -34,7 +34,7 @@ import type RokkaImage from '@/classes/RokkaImage';
 import Back from './Icons/Back.vue';
 import InnerCarousel from './InnerCarousel.vue';
 
-const emit = defineEmits(['openOverlay'])
+const emit = defineEmits(['openOverview'])
 const props = defineProps({
     images: {
         type: Array as PropType<RokkaImage[]>,

@@ -5,14 +5,14 @@
         <div class="absolute w-full">
             <Carousel v-model="currentSlide" :wrap-around="true">
                 <Slide v-for="(image, index) of images" :key="index">
-                    <div class="flex flex-col w-full h-[var(--slider-height)]">
-                        <div class="flex-auto overflow-hidden rounded-sm bg-white bg-opacity-10">
+                    <div class="flex flex-col w-full h-[var(--slider-height)] px-2">
+                        <div class="flex-auto overflow-hidden rounded-sm bg-gray-400 bg-opacity-10">
                             <img class="object-contain w-full h-full" :src="image.url" :alt="image.description"/>
                         </div>
-                        <div class="flex-shrink-0 flex justify-between mt-3">
-                            <p>{{image.description}}</p>
+                        <div class="flex-shrink-0 flex justify-between mt-3 px-2">
+                            <p class="text-white">{{image.description}}</p>
                             <ExternalLink :to="`${image.url}?download`">
-                                <p><Download class="inline mr-2"/>Download</p>
+                                <p class="text-white"><Download class="inline mr-2"/>{{ $t('gallery.download') }}</p>
                             </ExternalLink>
                         </div>
                     </div>

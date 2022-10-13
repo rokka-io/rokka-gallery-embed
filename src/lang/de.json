@@ -1,3 +1,10 @@
 {
-    "a":"amokfanmofaO"
+    "teaser": {
+        "openOverview": "Alle Fotos Anzeigen",
+        "poweredBy": "powered by"
+    },
+    "gallery": {
+        "openOverview": "Übersicht",
+        "download": "Download"
+    }
 }
