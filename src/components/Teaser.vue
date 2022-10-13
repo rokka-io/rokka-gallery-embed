@@ -1,6 +1,5 @@
 <template>
   <div class="w-full">
-    {{$t('a')}}
     <div class="w-full mb-4 grid grid-cols-4 gap-4">
       <Image
         v-for="(image, index) of images.slice(0, 4)"
