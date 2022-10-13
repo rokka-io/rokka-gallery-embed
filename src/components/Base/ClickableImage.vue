@@ -10,13 +10,13 @@
   </Clickable>
 </template>
 <script lang="ts" setup>
-import type RokkaImage from '@/classes/RokkaImage';
+import type Image from '@/classes/Image';
 import type { PropType } from 'vue';
 import Clickable from './Clickable.vue';
 
 defineProps({
   image: {
-    type: Object as PropType<RokkaImage>,
+    type: Object as PropType<Image>,
     required: true,
   },
 });

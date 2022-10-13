@@ -12,7 +12,10 @@
                         <div class="flex-shrink-0 flex justify-between mt-3 px-2">
                             <p class="text-white">{{image.description}}</p>
                             <ExternalLink :to="`${image.url}?download`">
-                                <p class="text-white"><Download class="inline mr-2"/>{{ $t('gallery.download') }}</p>
+                                <p class="text-white">
+                                    <Download class="inline mr-2"/>
+                                    {{ $t('gallery.download') }}
+                                </p>
                             </ExternalLink>
                         </div>
                     </div>
@@ -23,16 +26,16 @@
 </template>
 <script setup lang="ts">
 import { Carousel, Slide } from 'vue3-carousel';
-import 'vue3-carousel/dist/carousel.css'
+import 'vue3-carousel/dist/carousel.css';
 import type { PropType } from 'vue';
 import { ref, computed, onMounted, onUnmounted } from 'vue';
-import type RokkaImage from '@/classes/RokkaImage';
+import type Image from '@/classes/Image';
 import Download from './Icons/Download.vue';
 import ExternalLink from './Base/ExternalLink.vue';
 
 const props = defineProps({
     images: {
-        type: Array as PropType<RokkaImage[]>,
+        type: Array as PropType<Image[]>,
         required: true,
     },
     modelValue: {

@@ -6,9 +6,12 @@
             </Clickable>
         </div>
         <div class="flex-auto flex flex-col h-full">
-            <div class="mb-4">
+            <div class="mb-4 px-4">
                 <Clickable @click="emit('openOverview')">
-                    <p class="text-white"><Back class="inline mr-2"/>{{ $t('gallery.openOverview') }}</p>
+                    <p class="text-white">
+                        <Back class="inline mr-2"/>
+                        {{ $t('gallery.openOverview') }}
+                    </p>
                 </Clickable>
             </div>
             <InnerCarousel
@@ -30,25 +33,25 @@ import type { PropType } from 'vue';
 import Clickable from './Base/Clickable.vue';
 import Right from './Icons/Right.vue';
 import Left from './Icons/Left.vue';
-import type RokkaImage from '@/classes/RokkaImage';
+import type Image from '@/classes/Image';
 import Back from './Icons/Back.vue';
 import InnerCarousel from './InnerCarousel.vue';
 
 const emit = defineEmits(['openOverview'])
 const props = defineProps({
     images: {
-        type: Array as PropType<RokkaImage[]>,
+        type: Array as PropType<Image[]>,
         required: true,
     },
     image: {
-        type: Object as PropType<RokkaImage>,
+        type: Object as PropType<Image>,
         default: null,
     }
 })
 
 const currentSlide = ref(0);
 
-const imageIndex = (needleImage: RokkaImage) => props.images.findIndex((image) => image.id === needleImage.id)
+const imageIndex = (needleImage: Image) => props.images.findIndex((image) => image.id === needleImage.id)
 watch(props.image, (image) => {
     if(image) currentSlide.value = imageIndex(image);
 })

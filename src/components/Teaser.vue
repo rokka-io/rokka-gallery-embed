@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <div class="w-full mb-4 grid grid-cols-4 gap-4">
-      <Image
+      <ClickableImage
         v-for="(image, index) of images.slice(0, 4)"
         :key="index"
         :image="image"
@@ -20,15 +20,15 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, type PropType } from 'vue';
-import type RokkaImage from '@/classes/RokkaImage';
-import Image from './Base/Image.vue';
+import type Image from '@/classes/Image';
+import ClickableImage from './Base/ClickableImage.vue';
 import Rokka from './Icons/Rokka.vue';
 import Clickable from './Base/Clickable.vue';
 import ExternalLink from './Base/ExternalLink.vue';
 
 defineProps({
   images: {
-    type: Array as PropType<RokkaImage[]>,
+    type: Array as PropType<Image[]>,
     required: true,
   },
 });
