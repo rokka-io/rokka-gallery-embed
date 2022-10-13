@@ -29,8 +29,6 @@ import Teaser from "./Teaser.vue";
 import Overlay from "./Base/Overlay.vue";
 import Overview from "./Overview.vue";
 import Carousel from "./Carousel.vue";
-import { computed } from '@vue/reactivity';
-
 
 defineProps({
     images: {
@@ -39,14 +37,8 @@ defineProps({
     }
 })
 
-
-const activeImage = ref<RokkaImage>();
-
-const isOverlayActive = computed({
-    set: (v) => !v ? openOverlay.value = null : null,
-    get: () => openOverlay.value !== null
-});
 const openOverlay = ref<'overview'|'carousel'|null>();
+const activeImage = ref<RokkaImage>();
 
 const close = () => openOverlay.value = null;
 
