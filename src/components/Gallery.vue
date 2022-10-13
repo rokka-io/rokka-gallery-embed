@@ -16,8 +16,8 @@
       :images="images"
       :image="activeImage"
       @open-overview="openOverview"
-    /> </Overlay
-  >
+    />
+  </Overlay>
 </template>
 <script setup lang="ts">
 import type Image from '@/classes/Image';
