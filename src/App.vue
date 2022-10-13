@@ -3,39 +3,19 @@
     <h1 class="uppercase font-bold">rokka image gallery</h1>
   </header>
   <main>
-    <Gallery
-      :images="images"
-    />
+    <Gallery :images="images" />
   </main>
 </template>
 <script lang="ts" setup>
+import type Image from './classes/Image';
+import type RokkaImage from './classes/RokkaImage';
 import Gallery from './components/Gallery.vue';
+import useRokkaImages from './composables/useRokkaImages';
 
-const images = [
-  {
-    id: 'aa',
-    url: 'https://images.unsplash.com/photo-1664575198263-269a022d6e14?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60',
-    description: 'dAtA aNaLySt',
-  },
-  {
-    id: 'bb',
-    url: 'https://images.unsplash.com/photo-1664910059414-f7d75a61f907?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60',
-    description: 'Maske',
-  },
-  {
-    id: 'cc',
-    url: 'https://images.unsplash.com/photo-1664970251461-d027c58f94fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60',
-    description: 'strand',
-  },
-  {
-    id: 'dd',
-    url: 'https://plus.unsplash.com/premium_photo-1661740645196-86113ed93ddd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60',
-    description: 'essen',
-  },
-];
+const rokkaImages: RokkaImage[] = [{"hash":"969039","mimetype":"image\/jpeg","format":"jpg","name":"tomas-jerabek-IZCdeSNVtZA.jpg"},{"hash":"883058","mimetype":"image\/jpeg","format":"jpg","name":"tomas-jerabek-IZCdeSNVtZA.jpg"},{"hash":"cb596f","mimetype":"image\/jpeg","format":"jpg","name":"claudio-schwarz-purzlbaum-3G8lNeqg2TQ.jpg"},{"hash":"94c095","mimetype":"image\/jpeg","format":"jpg","name":"carol-jeng-5vpil1StrJ4.jpg"},{"hash":"a36341","mimetype":"image\/jpeg","format":"jpg","name":"claudio-schwarz-purzlbaum-aVv19gC_ee8.jpg"},{"hash":"223328","mimetype":"image\/jpeg","format":"jpg","name":"bing-hao-9P0pzrbjtHU.jpg"},{"hash":"a91359","mimetype":"image\/jpeg","format":"jpg","name":"dominic-ruegg-vEr5I6CfrF0.jpg"},{"hash":"f93d29","mimetype":"image\/jpeg","format":"jpg","name":"christian-burri-sLOIsAUxTgY.jpg"},{"hash":"c56b3a","mimetype":"image\/jpeg","format":"jpg","name":"dominic-ruegg-zxgiC7rYwoc.jpg"},{"hash":"730d48","mimetype":"image\/jpeg","format":"jpg","name":"danilo-capece-4Su459cah90.jpg"},{"hash":"5a8404","mimetype":"image\/jpeg","format":"jpg","name":"teo-zac-55MmQXny4GQ.jpg"},{"hash":"e856f7","mimetype":"image\/jpeg","format":"jpg","name":"markus-spiske-Z_Al-iyP8OA.jpg"},{"hash":"5e1522","mimetype":"image\/jpeg","format":"jpg","name":"lisa-therese-hT1Rvzpi1cs.jpg"},{"hash":"424110","mimetype":"image\/jpeg","format":"jpg","name":"sambo-ratanak-f0KvwL7SF-I.jpg"},{"hash":"c25767","mimetype":"image\/jpeg","format":"jpg","name":"eric-weber-_wB88hxsW8M.jpg"},{"hash":"05ed86","mimetype":"image\/jpeg","format":"jpg","name":"behzad-ghaffarian-bf4tski1t9I.jpg"},{"hash":"e7800a","mimetype":"image\/jpeg","format":"jpg","name":"niklas-liniger-uFJukey-7DY.jpg"},{"hash":"f2ebfc","mimetype":"image\/jpeg","format":"jpg","name":"claudio-schwarz-purzlbaum-KbqIim1Vlb8.jpg"}];
+const images: Image[] = useRokkaImages(rokkaImages); 
 </script>
 <style>
-
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -62,5 +42,4 @@ const images = [
     padding-right: calc(var(--section-gap) / 2);
   }
 }
-
 </style>

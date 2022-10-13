@@ -5,7 +5,7 @@
         v-for="(image, index) of images.slice(0, 4)"
         :key="index"
         :image="image"
-        @click="image => emit('openImage', image)"
+        @click="(image) => emit('openImage', image)"
       />
     </div>
     <div class="w-full flex justify-between">
@@ -33,5 +33,5 @@ defineProps({
   },
 });
 
-const emit = defineEmits(['openImage', 'openOverview'])
+const emit = defineEmits(['openImage', 'openOverview']);
 </script>

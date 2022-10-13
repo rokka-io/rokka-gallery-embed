@@ -12,8 +12,11 @@ export default defineConfig({
     vue(),
     vueJsx(),
     vueI18n({
-      include: resolve(dirname(fileURLToPath(import.meta.url)), './src/lang/**'),
-    })
+      include: resolve(
+        dirname(fileURLToPath(import.meta.url)),
+        './src/lang/**'
+      ),
+    }),
   ],
   resolve: {
     alias: {
