@@ -1,15 +1,15 @@
 <template>
     <div class="flex items-center h-full w-full">
         <div class="mx-4">
-            <InvisibleButton @click="prev">
+            <Clickable @click="prev">
                 <Left/>
-            </InvisibleButton>
+            </Clickable>
         </div>
         <div class="flex-auto flex flex-col h-full">
             <div>
-                <InvisibleButton @click="emit('openOverlay')">
+                <Clickable @click="emit('openOverlay')">
                     <p><Back class="inline mr-2"/>Übersicht</p>
-                </InvisibleButton>
+                </Clickable>
             </div>
             <div class="flex-auto relative"
                 ref="sizer" :style="{'--slider-height': `${imageHeight}px`}"
@@ -34,9 +34,9 @@
             </div>
         </div>
         <div class="mx-4">
-            <InvisibleButton @click="next">
+            <Clickable @click="next">
                 <Right/>
-            </InvisibleButton>
+            </Clickable>
         </div>
     </div>
 </template>
@@ -45,7 +45,7 @@ import { Carousel, Slide } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css'
 import { onMounted, onUnmounted, ref, watch } from 'vue';
 import type { PropType } from 'vue';
-import InvisibleButton from './InvisibleButton.vue';
+import Clickable from './Base/Clickable.vue';
 import Right from './Icons/Right.vue';
 import Left from './Icons/Left.vue';
 import type RokkaImage from '@/classes/RokkaImage';

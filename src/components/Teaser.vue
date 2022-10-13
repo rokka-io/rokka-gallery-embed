@@ -9,9 +9,9 @@
       />
     </div>
     <div class="w-full flex justify-between">
-      <InvisibleButton @click="emit('openOverlay')">
+      <Clickable @click="emit('openOverlay')">
         <p>Alle Fotos Anzeigen</p>
-      </InvisibleButton>
+      </Clickable>
       <a class="cursor-pointer" target="_blank" href="https://rokka.io">
         <p>powered by <Rokka class="inline ml-1" /></p>
       </a>
@@ -21,9 +21,9 @@
 <script lang="ts" setup>
 import { defineProps, type PropType } from 'vue';
 import type RokkaImage from '@/classes/RokkaImage';
-import Image from './Image.vue';
+import Image from './Base/Image.vue';
 import Rokka from './Icons/Rokka.vue';
-import InvisibleButton from './InvisibleButton.vue';
+import Clickable from './Base/Clickable.vue';
 
 defineProps({
   images: {

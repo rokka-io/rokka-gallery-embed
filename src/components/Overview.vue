@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { defineProps, type PropType } from 'vue';
 import type RokkaImage from '@/classes/RokkaImage';
-import Image from './Image.vue';
+import Image from './Base/Image.vue';
 
 defineProps({
   images: {

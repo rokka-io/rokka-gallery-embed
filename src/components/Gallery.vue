@@ -1,17 +1,17 @@
 <template>
-    <Preview 
+    <Teaser 
         :images="images" 
         @open-image="setActiveImage"
         @open-overlay="openOverlay"
     />
     <Overlay v-model="isOverlayActive" >
-        <ImageOverview
+        <Overview
             v-if="!activeImage"
             :images="images" 
             @open-image="setActiveImage" 
         />
 
-        <ImageCarousel
+        <Carousel
             v-if="activeImage"
             :images="images"
             :image="activeImage"
@@ -22,10 +22,10 @@
 <script setup lang="ts">
 import type RokkaImage from '@/classes/RokkaImage';
 import { ref, type PropType } from 'vue';
-import Preview from "./Preview.vue";
-import Overlay from "./Overlay.vue";
-import ImageOverview from "./ImageOverview.vue";
-import ImageCarousel from "./ImageCarousel.vue";
+import Teaser from "./Teaser.vue";
+import Overlay from "./Base/Overlay.vue";
+import Overview from "./Overview.vue";
+import Carousel from "./Carousel.vue";
 
 
 defineProps({

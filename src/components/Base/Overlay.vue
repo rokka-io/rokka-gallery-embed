@@ -6,9 +6,9 @@
   >
     <div class="flex flex-col w-full h-full">
       <div class="flex justify-end pb-8">
-            <InvisibleButton @click="emit('update:modelValue', false)">
+            <Clickable @click="emit('update:modelValue', false)">
                     <Close/>
-              </InvisibleButton>
+              </Clickable>
       </div>
       <div class="flex-auto overflow-y-auto">
         <slot></slot>
@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { defineEmits } from 'vue'; 
 import Close from '@/components/Icons/Close.vue';
-import InvisibleButton from './InvisibleButton.vue';
+import Clickable from './Clickable.vue';
 
 defineProps({
   modelValue: {

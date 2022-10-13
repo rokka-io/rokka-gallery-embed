@@ -5,14 +5,14 @@
     </div>
   </header>
   <main>
-    <ImageGallery
+    <Gallery
       :images="images"
     />
   </main>
 </template>
 <script lang="ts" setup>
 import HelloWorld from './components/HelloWorld.vue';
-import ImageGallery from './components/ImageGallery.vue';
+import Gallery from './components/Gallery.vue';
 
 const images = [
   {

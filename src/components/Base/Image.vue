@@ -1,5 +1,5 @@
 <template>
-  <InvisibleButton @click="emit('click', image)">
+  <Clickable @click="emit('click', image)">
     <div class="aspect-image">
       <img
         class="object-cover w-full h-full"
@@ -7,12 +7,12 @@
         :alt="image.description"
       />
     </div>
-  </InvisibleButton>
+  </Clickable>
 </template>
 <script lang="ts" setup>
 import type RokkaImage from '@/classes/RokkaImage';
 import type { PropType } from 'vue';
-import InvisibleButton from './InvisibleButton.vue';
+import Clickable from './Clickable.vue';
 
 defineProps({
   image: {
