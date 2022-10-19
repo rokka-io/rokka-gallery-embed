@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center h-full w-full">
-    <div class="mx-4">
+    <div class="md:mx-4">
       <Clickable @click="prev">
         <Left />
       </Clickable>
@@ -14,9 +14,13 @@
           </p>
         </Clickable>
       </div>
-      <InnerCarousel v-model="currentSlide" :images="images" />
+      <CarouselWithFixedHeight v-model="currentSlide" :items="images">
+        <template #slide="{ item } : { item: Image }">
+          <CarouselImageItem :image="item" />
+        </template>
+      </CarouselWithFixedHeight>
     </div>
-    <div class="mx-4">
+    <div class="md:mx-4">
       <Clickable @click="next">
         <Right />
       </Clickable>
@@ -31,7 +35,8 @@ import Right from './Icons/Right.vue';
 import Left from './Icons/Left.vue';
 import type Image from '@/classes/Image';
 import Back from './Icons/Back.vue';
-import InnerCarousel from './InnerCarousel.vue';
+import CarouselImageItem from './Base/CarouselImageItem.vue';
+import CarouselWithFixedHeight from './Base/CarouselWithFixedHeight.vue';
 
 const emit = defineEmits(['openOverview']);
 const props = defineProps({
@@ -45,10 +50,10 @@ const props = defineProps({
   },
 });
 
-const currentSlide = ref(0);
-
 const imageIndex = (needleImage: Image) =>
   props.images.findIndex((image) => image.id === needleImage.id);
+
+const currentSlide = ref(0);
 watch(props.image, (image) => {
   if (image) currentSlide.value = imageIndex(image);
 });
