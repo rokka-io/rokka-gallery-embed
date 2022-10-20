@@ -12,7 +12,7 @@
       <p class="text-white">{{ image.description }}</p>
       <ExternalLink
                 :to="`${image.url}?download`"
-                tabindex="downloadButtonTabIndex"
+                :tabindex="downloadButtonTabIndex"
             >
         <p class="text-white">
           <Download class="inline mr-2" />
