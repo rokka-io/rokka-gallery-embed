@@ -1,6 +1,6 @@
 <template>
   <Teaser
-    :images="images"
+    :images="teaserImages"
     @open-image="openImage"
     @open-overview="openOverview"
   />
@@ -27,12 +27,28 @@ import Overlay from './Base/Overlay.vue';
 import Overview from './Overview.vue';
 import Carousel from './Carousel.vue';
 
-defineProps({
+const props = defineProps({
   images: {
     type: Array as PropType<Image[]>,
     required: true,
   },
+  favouriteImages: {
+    type: Array as PropType<Image[]>,
+    required: true,
+  }
 });
+
+// Make sure always four teaser images are available
+// Either Fills up teaser images with images that arent favourited
+// Or return the first 4 favourited images
+const favouriteImageIds = props.favouriteImages.map(img => img.id);
+const teaserImages = props.favouriteImages.length < 4 ?
+  props.favouriteImages.concat(
+    props.images
+      .filter(img => !favouriteImageIds.includes(img.id))
+      .slice(0, props.favouriteImages.length-4)
+  ) 
+  : props.favouriteImages.slice(0, 4);
 
 const openOverlay = ref<'overview' | 'carousel' | null>();
 const activeImage = ref<Image>();

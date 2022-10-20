@@ -3,7 +3,7 @@
     <h1 class="uppercase font-bold">rokka image gallery</h1>
   </header>
   <main>
-    <Gallery :images="images" />
+    <Gallery :images="images" :favourite-images="favouriteImages"/>
   </main>
 </template>
 <script lang="ts" setup>
@@ -122,7 +122,11 @@ const rokkaImages: RokkaImage[] = [
     name: 'claudio-schwarz-purzlbaum-KbqIim1Vlb8.jpg',
   },
 ];
+
+const favouriteRokkaImages = rokkaImages.slice(-3);
+
 const images: Image[] = useRokkaImages(rokkaImages);
+const favouriteImages: Image[] = useRokkaImages(favouriteRokkaImages);
 </script>
 <style>
 #app {
