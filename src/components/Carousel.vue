@@ -7,7 +7,7 @@
     </div>
     <div class="flex-auto flex flex-col h-full">
       <div class="mb-4 px-4">
-        <Clickable @click="emit('openOverview')">
+        <Clickable @click="emit('openOverview')" tabindex="0">
           <p class="text-white">
             <Back class="inline mr-2" />
             {{ $t('gallery.openOverview') }}
@@ -20,7 +20,12 @@
         :current-item="currentSlide"
       >
         <template #slide="{ item }: { item: Image }">
-          <CarouselImageItem :image="item" />
+          <CarouselImageItem
+              :image="item"
+              :download-button-tab-index="
+              downloadButtonTabIndex(currentSlide, item)
+              "
+          />
         </template>
       </CarouselWithFixedHeight>
     </div>
@@ -77,4 +82,6 @@ onMounted(() => {
 const carousel = ref(null);
 const prev = () => carousel.value.prev();
 const next = () => carousel.value.next();
+const downloadButtonTabIndex = (currentSlide, item) =>
+  currentSlide === props.images.indexOf(item) ? '0' : '-1';
 </script>
