@@ -131,14 +131,14 @@ const favouriteImages: Image[] = useRokkaImages(favouriteRokkaImages);
 // Make sure always four teaser images are available
 // Either Fills up teaser images with images that arent favourited
 // Or return the first 4 favourited images
-const fixedLenghtFavouriteImages = props.favouriteImages.map(img => img.id);
-const teaserImages = props.favouriteImages.length < 4 ?
-  props.favouriteImages.concat(
-    props.images
+const fixedLenghtFavouriteImages = favouriteImages.map(img => img.id);
+const teaserImages = favouriteImages.length < 4 ?
+  favouriteImages.concat(
+    images
       .filter(img => !favouriteImageIds.includes(img.id))
-      .slice(0, props.favouriteImages.length-4)
+      .slice(0, favouriteImages.length-4)
   ) 
-  : props.favouriteImages.slice(0, 4);
+  : favouriteImages.slice(0, 4);
 </script>
 <style>
 #app {
