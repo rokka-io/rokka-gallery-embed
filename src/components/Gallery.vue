@@ -1,6 +1,7 @@
 <template>
   <Teaser
     :images="favouriteImages"
+    :teaser-tab-index="teaserTabindex"
     @open-image="openImage"
     @open-overview="openOverview"
   />
@@ -8,6 +9,7 @@
     <Overview
       v-if="openOverlay === 'overview'"
       :images="images"
+      :overview-tab-index="overviewTabindex"
       @open-image="openImage"
     />
 
@@ -21,7 +23,7 @@
 </template>
 <script setup lang="ts">
 import type Image from '@/classes/Image';
-import { ref, type PropType } from 'vue';
+import { ref, type PropType, computed } from 'vue';
 import Teaser from './Teaser.vue';
 import Overlay from './Base/Overlay.vue';
 import Overview from './Overview.vue';
@@ -38,7 +40,7 @@ defineProps({
   },
 });
 
-const openOverlay = ref<'overview' | 'carousel' | null>();
+const openOverlay = ref<'overview' | 'carousel' | null>(null);
 const activeImage = ref<Image>();
 
 const close = () => (openOverlay.value = null);
@@ -51,4 +53,11 @@ const openImage = (image: Image) => {
   activeImage.value = image;
   openOverlay.value = 'carousel';
 };
+
+const teaserTabindex = computed(() =>
+  openOverlay.value === null ? '0' : '-1'
+);
+const overviewTabindex = computed(() =>
+  openOverlay.value === 'overview' ? '0' : '-1'
+);
 </script>

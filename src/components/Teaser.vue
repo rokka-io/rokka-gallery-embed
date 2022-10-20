@@ -5,15 +5,20 @@
         v-for="(image, index) of images.slice(0, 4)"
         :key="index"
         :image="image"
+        :tabindex="teaserTabIndex"
         @click="(image) => emit('openImage', image)"
       />
     </div>
     <div class="w-full flex justify-between">
-      <Clickable @click="emit('openOverview')">
+      <Clickable
+        @click="emit('openOverview')"
+        @keydown.enter="emit('openOverview')"
+        :tabindex="teaserTabIndex"
+      >
         <p>{{ $t('teaser.openOverview') }}</p>
       </Clickable>
-      <ExternalLink to="https://rokka.io">
-        <p>{{ $t('teaser.poweredBy') }}<Rokka class="inline ml-2" /></p>
+      <ExternalLink to="https://rokka.io" :tabindex="teaserTabIndex">
+        <p>{{ $t('teaser.poweredBy') }}<Rokka class="inline ml-2" tease /></p>
       </ExternalLink>
     </div>
   </div>
@@ -30,6 +35,10 @@ defineProps({
   images: {
     type: Array as PropType<Image[]>,
     required: true,
+  },
+  teaserTabIndex: {
+    type: String,
+    default: '0',
   },
 });
 
