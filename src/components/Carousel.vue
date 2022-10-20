@@ -32,7 +32,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import type { PropType } from 'vue';
 import Clickable from './Base/Clickable.vue';
 import Right from './Icons/Right.vue';
@@ -57,6 +57,22 @@ const props = defineProps({
 const imageIndex = (needleImage: Image) =>
   props.images.findIndex((image) => image.id === needleImage.id);
 const currentSlide = imageIndex(props.image);
+
+watch(props.image, (image) => {
+  if (image) currentSlide.value = imageIndex(image);
+});
+onMounted(() => (currentSlide.value = imageIndex(props.image)));
+
+onMounted(() => {
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight'){
+      next()
+    }
+    if (event.key === 'ArrowLeft'){
+      prev()
+    }
+  });
+});
 
 const carousel = ref(null);
 const prev = () => carousel.value.prev();
