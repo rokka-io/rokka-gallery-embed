@@ -1,8 +1,5 @@
 <template>
-  <Clickable
-    @click="emit('click', image)"
-    @keydown.enter="emit('click', image)"
-  >
+  <Clickable @click="emit('click', image)">
     <div class="aspect-image">
       <img
         class="object-cover w-full h-full"

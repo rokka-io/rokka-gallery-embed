@@ -10,11 +10,7 @@
       />
     </div>
     <div class="w-full flex justify-between">
-      <Clickable
-        @click="emit('openOverview')"
-        @keydown.enter="emit('openOverview')"
-        :tabindex="teaserTabIndex"
-      >
+      <Clickable @click="emit('openOverview')" :tabindex="teaserTabIndex">
         <p>{{ $t('teaser.openOverview') }}</p>
       </Clickable>
       <ExternalLink to="https://rokka.io" :tabindex="teaserTabIndex">
