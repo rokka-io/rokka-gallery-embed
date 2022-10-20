@@ -9,7 +9,6 @@
     <Overview
       v-if="openOverlay === 'overview'"
       :images="images"
-      :overview-tab-index="overviewTabindex"
       @open-image="openImage"
     />
 
@@ -56,8 +55,5 @@ const openImage = (image: Image) => {
 
 const teaserTabindex = computed(() =>
   openOverlay.value === null ? '0' : '-1'
-);
-const overviewTabindex = computed(() =>
-  openOverlay.value === 'overview' ? '0' : '-1'
 );
 </script>

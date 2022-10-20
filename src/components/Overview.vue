@@ -4,7 +4,7 @@
       v-for="(image, index) of images"
       :key="index"
       :image="image"
-      :tabindex="overviewTabIndex"
+      tabindex="0"
       @click="(image) => emit('openImage', image)"
     />
   </div>
@@ -18,10 +18,6 @@ defineProps({
   images: {
     type: Array as PropType<Image[]>,
     required: true,
-  },
-  overviewTabIndex: {
-    type: String,
-    default: '0',
   },
 });
 
