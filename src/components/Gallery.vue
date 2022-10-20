@@ -27,7 +27,7 @@ import Overlay from './Base/Overlay.vue';
 import Overview from './Overview.vue';
 import Carousel from './Carousel.vue';
 
-const props = defineProps({
+defineProps({
   images: {
     type: Array as PropType<Image[]>,
     required: true,
