@@ -3,7 +3,7 @@
     <h1 class="uppercase font-bold">rokka image gallery</h1>
   </header>
   <main>
-    <Gallery :images="images" />
+    <Gallery :images="images" :favourite-images="fixedLenghtFavouriteImages"/>
   </main>
 </template>
 <script lang="ts" setup>
@@ -122,7 +122,23 @@ const rokkaImages: RokkaImage[] = [
     name: 'claudio-schwarz-purzlbaum-KbqIim1Vlb8.jpg',
   },
 ];
+
+const favouriteRokkaImages = rokkaImages.slice(-3);
+
 const images: Image[] = useRokkaImages(rokkaImages);
+const favouriteImages: Image[] = useRokkaImages(favouriteRokkaImages);
+
+// Make sure always four teaser images are available
+// Either Fills up teaser images with images that arent favourited
+// Or return the first 4 favourited images
+const fixedLenghtFavouriteImages = props.favouriteImages.map(img => img.id);
+const teaserImages = props.favouriteImages.length < 4 ?
+  props.favouriteImages.concat(
+    props.images
+      .filter(img => !favouriteImageIds.includes(img.id))
+      .slice(0, props.favouriteImages.length-4)
+  ) 
+  : props.favouriteImages.slice(0, 4);
 </script>
 <style>
 #app {

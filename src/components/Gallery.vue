@@ -1,6 +1,6 @@
 <template>
   <Teaser
-    :images="images"
+    :images="favouriteImages"
     @open-image="openImage"
     @open-overview="openOverview"
   />
@@ -32,6 +32,10 @@ defineProps({
     type: Array as PropType<Image[]>,
     required: true,
   },
+  favouriteImages: {
+    type: Array as PropType<Image[]>,
+    required: true,
+  }
 });
 
 const openOverlay = ref<'overview' | 'carousel' | null>();
