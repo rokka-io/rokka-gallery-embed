@@ -14,7 +14,7 @@
           </p>
         </Clickable>
       </div>
-      <CarouselWithFixedHeight v-model="currentSlide" :items="images">
+      <CarouselWithFixedHeight ref="carousel" :items="images" :current-item="currentSlide">
         <template #slide="{ item } : { item: Image }">
           <CarouselImageItem :image="item" />
         </template>
@@ -28,7 +28,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, ref, watch, computed } from 'vue';
 import type { PropType } from 'vue';
 import Clickable from './Base/Clickable.vue';
 import Right from './Icons/Right.vue';
@@ -52,13 +52,9 @@ const props = defineProps({
 
 const imageIndex = (needleImage: Image) =>
   props.images.findIndex((image) => image.id === needleImage.id);
+const currentSlide = imageIndex(props.image);
 
-const currentSlide = ref(0);
-watch(props.image, (image) => {
-  if (image) currentSlide.value = imageIndex(image);
-});
-onMounted(() => (currentSlide.value = imageIndex(props.image)));
-
-const prev = () => currentSlide.value--;
-const next = () => currentSlide.value++;
+const carousel = ref(null);
+const prev = () => carousel.value.prev();
+const next = () => carousel.value.next();
 </script>

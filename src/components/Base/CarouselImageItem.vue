@@ -3,6 +3,7 @@
         <div class="flex-auto overflow-hidden rounded-sm bg-gray-400 bg-opacity-10">
             <img
                 class="object-contain w-full h-full"
+                @dragstart.prevent
                 :src="image.url"
                 :alt="image.description"
             />
