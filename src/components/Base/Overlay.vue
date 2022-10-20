@@ -15,9 +15,17 @@
   </div>
 </template>
 <script setup lang="ts">
-import { defineEmits } from 'vue';
+import { defineEmits, onMounted } from 'vue';
 import Close from '@/components/Icons/Close.vue';
 import Clickable from './Clickable.vue';
 
 const emit = defineEmits(['close']);
+
+onMounted(() => {
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      emit('close');
+    }
+  });
+});
 </script>
