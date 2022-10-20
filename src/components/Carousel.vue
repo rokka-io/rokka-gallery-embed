@@ -70,11 +70,11 @@ onMounted(() => (currentSlide.value = imageIndex(props.image)));
 
 onMounted(() => {
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowRight'){
-      next()
+    if (event.key === 'ArrowRight') {
+      next();
     }
-    if (event.key === 'ArrowLeft'){
-      prev()
+    if (event.key === 'ArrowLeft') {
+      prev();
     }
   });
 });
