@@ -5,19 +5,20 @@
     :style="{ '--slider-height': `${imageHeight}px` }"
   >
     <div class="absolute w-full">
-      <Carousel v-model="currentSlide" :wrap-around="true">
-        <Slide v-for="(item, index) of items" :key="index">
-          <div class="w-full h-[var(--slider-height)]">
-            <slot name="slide" :item="item"></slot>
-          </div>
-        </Slide>
-      </Carousel>
+      <Flicking ref="slider" :options="options">
+        <div
+          class="w-full h-[var(--slider-height)]" 
+          v-for="(item, index) of items" :key="index"
+        >
+          <slot name="slide" :item="item"></slot>
+        </div>
+      </Flicking>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { Carousel, Slide } from 'vue3-carousel';
-import 'vue3-carousel/dist/carousel.css';
+import Flicking from '@egjs/vue3-flicking';
+import "@egjs/vue3-flicking/dist/flicking.css";
 import { ref, computed, onMounted, onUnmounted, type PropType } from 'vue';
 
 const props = defineProps({
@@ -25,17 +26,29 @@ const props = defineProps({
     type: Array as PropType<any>,
     required: true,
   },
-  modelValue: {
+  currentItem: {
     type: Number,
     required: true,
-  },
+  }
 });
-const emit = defineEmits(['update:modelValue']);
 
-const currentSlide = computed({
-  set: (slide) => emit('update:modelValue', slide),
-  get: () => props.modelValue,
-});
+
+const options = {
+  circular: true,
+  panelsPerView: 1,
+  moveType: 'snap',
+  deceleration: 0.25,
+  defaultIndex: props.currentItem,
+  autoResize: true,
+  resizeDebounce: 100,
+  maxResizeDebounce: 300,
+  autoInit: true,
+}
+
+const slider = ref(null);
+const prev = () => !slider.value.animating ? slider.value.prev() : null;
+const next = () => !slider.value.animating ? slider.value.next() : null;
+defineExpose({prev, next});
 
 // Read height out from Parent container
 // div is "empty" since child is absolute

@@ -11,9 +11,9 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@egjs/vue3-flicking": "^4.10.0",
     "vue": "^3.2.38",
-    "vue-i18n": "^9.2.2",
-    "vue3-carousel": "^0.2.0"
+    "vue-i18n": "^9.2.2"
   },
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^6.0.3",
