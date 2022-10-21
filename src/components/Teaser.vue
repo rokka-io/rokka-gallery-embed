@@ -14,7 +14,7 @@
         <p>{{ $t('teaser.openOverview') }}</p>
       </Clickable>
       <ExternalLink to="https://rokka.io" :tabindex="teaserTabIndex">
-        <p>{{ $t('teaser.poweredBy') }}<Rokka class="inline ml-2" tease /></p>
+        <p>{{ $t('teaser.poweredBy') }}<Rokka class="inline ml-2" /></p>
       </ExternalLink>
     </div>
   </div>
