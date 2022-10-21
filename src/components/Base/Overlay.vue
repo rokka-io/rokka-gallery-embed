@@ -30,7 +30,6 @@ onUnmounted(() => {
 });
 
 const eventListener = (event: KeyboardEvent) => {
-  console.log('huhu')
   if (event.key === 'Escape') {
     emit('close');
   }
