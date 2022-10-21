@@ -24,10 +24,8 @@
       >
         <template #slide="{ item }: { item: Image }">
           <CarouselImageItem
-              :image="item"
-              :download-button-tab-index="
-                downloadButtonTabIndex(item)
-              "
+            :image="item"
+            :download-button-tab-index="downloadButtonTabIndex(item)"
           />
         </template>
       </CarouselWithFixedHeight>

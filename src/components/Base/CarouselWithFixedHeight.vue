@@ -49,7 +49,7 @@ const slider = ref(null);
 const prev = () => (!slider.value.animating ? slider.value.prev() : null);
 const next = () => (!slider.value.animating ? slider.value.next() : null);
 const currentSlide = () => slider.value?.index;
-defineExpose({prev, next, currentSlide});
+defineExpose({ prev, next, currentSlide });
 
 // Read height out from Parent container
 // div is "empty" since child is absolute

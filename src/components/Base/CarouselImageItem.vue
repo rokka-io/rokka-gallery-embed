@@ -11,9 +11,9 @@
     <div class="flex-shrink-0 flex justify-between mt-3 px-2">
       <p class="text-white">{{ image.description }}</p>
       <ExternalLink
-                :to="`${image.url}?download`"
-                :tabindex="downloadButtonTabIndex"
-            >
+        :to="`${image.url}?download`"
+        :tabindex="downloadButtonTabIndex"
+      >
         <p class="text-white">
           <Download class="inline mr-2" />
           {{ $t('gallery.download') }}
@@ -29,12 +29,12 @@ import Download from '../Icons/Download.vue';
 import ExternalLink from './ExternalLink.vue';
 
 defineProps({
-    image: {
-      type: Object as PropType<Image>,
-      required: true,
-    },
-    downloadButtonTabIndex: {
-      type: String,
-    },
+  image: {
+    type: Object as PropType<Image>,
+    required: true,
+  },
+  downloadButtonTabIndex: {
+    type: String,
+  },
 });
 </script>
