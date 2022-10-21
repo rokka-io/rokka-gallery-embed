@@ -37,7 +37,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import type { PropType } from 'vue';
 import Clickable from './Base/Clickable.vue';
 import Right from './Icons/Right.vue';
@@ -64,15 +64,21 @@ const imageIndex = (needleImage: Image) =>
 const currentSlide = imageIndex(props.image);
 
 onMounted(() => {
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowRight') {
-      next();
-    }
-    if (event.key === 'ArrowLeft') {
-      prev();
-    }
-  });
+  document.addEventListener('keydown', eventListener);
 });
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', eventListener);
+});
+
+const eventListener = (event: KeyboardEvent) => {
+  if (event.key === 'ArrowRight') {
+    next();
+  }
+  if (event.key === 'ArrowLeft') {
+    prev();
+  }
+};
 
 const carousel = ref(null);
 const prev = () => carousel.value.prev();
