@@ -17,13 +17,13 @@
       <CarouselWithFixedHeight
         ref="carousel"
         :items="images"
-        :current-item="currentSlide"
+        :initial-item="initialSlide"
       >
         <template #slide="{ item }: { item: Image }">
           <CarouselImageItem
               :image="item"
               :download-button-tab-index="
-              downloadButtonTabIndex(currentSlide, item)
+                downloadButtonTabIndex(item)
               "
           />
         </template>
@@ -61,7 +61,7 @@ const props = defineProps({
 
 const imageIndex = (needleImage: Image) =>
   props.images.findIndex((image) => image.id === needleImage.id);
-const currentSlide = imageIndex(props.image);
+const initialSlide = imageIndex(props.image);
 
 onMounted(() => {
   document.addEventListener('keydown', eventListener);
@@ -83,6 +83,6 @@ const eventListener = (event: KeyboardEvent) => {
 const carousel = ref(null);
 const prev = () => carousel.value.prev();
 const next = () => carousel.value.next();
-const downloadButtonTabIndex = (currentSlide, item) =>
-  currentSlide === props.images.indexOf(item) ? '0' : '-1';
+const downloadButtonTabIndex = (item) =>
+  carousel.value?.currentSlide() === props.images.indexOf(item) ? '0' : '-1';
 </script>

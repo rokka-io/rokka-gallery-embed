@@ -27,7 +27,7 @@ const props = defineProps({
     type: Array as PropType<any>,
     required: true,
   },
-  currentItem: {
+  initialItem: {
     type: Number,
     required: true,
   },
@@ -38,7 +38,7 @@ const options = {
   panelsPerView: 1,
   moveType: 'snap',
   deceleration: 0.25,
-  defaultIndex: props.currentItem,
+  defaultIndex: props.initialItem,
   autoResize: true,
   resizeDebounce: 100,
   maxResizeDebounce: 300,
@@ -48,7 +48,8 @@ const options = {
 const slider = ref(null);
 const prev = () => (!slider.value.animating ? slider.value.prev() : null);
 const next = () => (!slider.value.animating ? slider.value.next() : null);
-defineExpose({ prev, next });
+const currentSlide = () => slider.value?.index;
+defineExpose({prev, next, currentSlide});
 
 // Read height out from Parent container
 // div is "empty" since child is absolute
