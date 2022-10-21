@@ -35,7 +35,7 @@ defineProps({
   favouriteImages: {
     type: Array as PropType<Image[]>,
     required: true,
-  }
+  },
 });
 
 const openOverlay = ref<'overview' | 'carousel' | null>();
