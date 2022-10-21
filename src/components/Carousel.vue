@@ -14,8 +14,12 @@
           </p>
         </Clickable>
       </div>
-      <CarouselWithFixedHeight ref="carousel" :items="images" :current-item="currentSlide">
-        <template #slide="{ item } : { item: Image }">
+      <CarouselWithFixedHeight
+        ref="carousel"
+        :items="images"
+        :current-item="currentSlide"
+      >
+        <template #slide="{ item }: { item: Image }">
           <CarouselImageItem :image="item" />
         </template>
       </CarouselWithFixedHeight>
@@ -28,7 +32,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref, watch, computed } from 'vue';
+import { ref } from 'vue';
 import type { PropType } from 'vue';
 import Clickable from './Base/Clickable.vue';
 import Right from './Icons/Right.vue';

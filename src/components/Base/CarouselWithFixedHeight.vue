@@ -7,8 +7,9 @@
     <div class="absolute w-full">
       <Flicking ref="slider" :options="options">
         <div
-          class="w-full h-[var(--slider-height)]" 
-          v-for="(item, index) of items" :key="index"
+          class="w-full h-[var(--slider-height)]"
+          v-for="(item, index) of items"
+          :key="index"
         >
           <slot name="slide" :item="item"></slot>
         </div>
@@ -18,8 +19,8 @@
 </template>
 <script setup lang="ts">
 import Flicking from '@egjs/vue3-flicking';
-import "@egjs/vue3-flicking/dist/flicking.css";
-import { ref, computed, onMounted, onUnmounted, type PropType } from 'vue';
+import '@egjs/vue3-flicking/dist/flicking.css';
+import { ref, onMounted, onUnmounted, type PropType } from 'vue';
 
 const props = defineProps({
   items: {
@@ -29,9 +30,8 @@ const props = defineProps({
   currentItem: {
     type: Number,
     required: true,
-  }
+  },
 });
-
 
 const options = {
   circular: true,
@@ -43,12 +43,12 @@ const options = {
   resizeDebounce: 100,
   maxResizeDebounce: 300,
   autoInit: true,
-}
+};
 
 const slider = ref(null);
-const prev = () => !slider.value.animating ? slider.value.prev() : null;
-const next = () => !slider.value.animating ? slider.value.next() : null;
-defineExpose({prev, next});
+const prev = () => (!slider.value.animating ? slider.value.prev() : null);
+const next = () => (!slider.value.animating ? slider.value.next() : null);
+defineExpose({ prev, next });
 
 // Read height out from Parent container
 // div is "empty" since child is absolute
