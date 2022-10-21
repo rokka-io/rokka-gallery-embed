@@ -7,7 +7,10 @@
     </div>
     <div class="flex-auto flex flex-col h-full">
       <div class="mb-4 px-4">
-        <Clickable @click="emit('openOverview')" tabindex="0">
+        <Clickable
+          @click="emit('openOverview', currentImageIndex)"
+          tabindex="0"
+        >
           <p class="text-white">
             <Back class="inline mr-2" />
             {{ $t('gallery.openOverview') }}
@@ -37,7 +40,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 import type { PropType } from 'vue';
 import Clickable from './Base/Clickable.vue';
 import Right from './Icons/Right.vue';
@@ -81,6 +84,7 @@ const eventListener = (event: KeyboardEvent) => {
 };
 
 const carousel = ref(null);
+const currentImageIndex = computed(() => carousel.value.currentSlide());
 const prev = () => carousel.value.prev();
 const next = () => carousel.value.next();
 const downloadButtonTabIndex = (item) =>

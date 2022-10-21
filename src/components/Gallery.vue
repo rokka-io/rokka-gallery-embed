@@ -9,6 +9,7 @@
     <Overview
       v-if="openOverlay === 'overview'"
       :images="images"
+      :focus-image-index="overviewFocusImageIndex"
       @open-image="openImage"
     />
 
@@ -41,10 +42,12 @@ defineProps({
 
 const openOverlay = ref<'overview' | 'carousel' | null>(null);
 const activeImage = ref<Image>();
+const overviewFocusImageIndex = ref<Number>(0);
 
 const close = () => (openOverlay.value = null);
 
-const openOverview = () => {
+const openOverview = (imageIndex: Number) => {
+  overviewFocusImageIndex.value = imageIndex;
   openOverlay.value = 'overview';
 };
 
