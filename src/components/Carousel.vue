@@ -63,11 +63,6 @@ const imageIndex = (needleImage: Image) =>
   props.images.findIndex((image) => image.id === needleImage.id);
 const currentSlide = imageIndex(props.image);
 
-watch(props.image, (image) => {
-  if (image) currentSlide.value = imageIndex(image);
-});
-onMounted(() => (currentSlide.value = imageIndex(props.image)));
-
 onMounted(() => {
   document.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowRight') {
