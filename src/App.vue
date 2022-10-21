@@ -3,7 +3,7 @@
     <h1 class="uppercase font-bold">rokka image gallery</h1>
   </header>
   <main>
-    <Gallery :images="images" :favourite-images="fixedLenghtFavouriteImages" />
+    <Gallery :images="images" :favourite-images="fixedLengthFavouriteImages" />
   </main>
 </template>
 <script lang="ts" setup>
@@ -129,10 +129,10 @@ const images: Image[] = useRokkaImages(rokkaImages);
 const favouriteImages: Image[] = useRokkaImages(favouriteRokkaImages);
 
 // Make sure always four teaser images are available
-// Either Fills up teaser images with images that arent favourited
-// Or return the first 4 favourited images
+// Either fills up teaser images with images that aren't favourited
+// Or return the first 4 favourite images
 const favouriteImageIds = favouriteImages.map((img) => img.id);
-const fixedLenghtFavouriteImages =
+const fixedLengthFavouriteImages =
   favouriteImages.length < 4
     ? favouriteImages.concat(
         images
