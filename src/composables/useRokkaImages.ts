@@ -13,6 +13,12 @@ export const useRokkaAlbum = async (
   baseUrl: string,
   albumName: string
 ): Promise<RokkaResponse> => {
-  const response = await fetch(`${baseUrl}/${albumName}/all.json`);
-  return await response.json();
+  const allResponse = await fetch(`${baseUrl}/${albumName}/all.json`);
+  const favoritesResponse = await fetch(
+    `${baseUrl}/${albumName}/favorites.json`
+  );
+  return {
+    all: await allResponse.json(),
+    favorites: await favoritesResponse.json(),
+  };
 };

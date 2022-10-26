@@ -5,6 +5,11 @@ export interface Image {
 }
 
 export interface RokkaResponse {
+  all: RokkaInnerResponse;
+  favorites: RokkaInnerResponse;
+}
+
+export interface RokkaInnerResponse {
   items: RokkaImage[];
   total: number;
 }

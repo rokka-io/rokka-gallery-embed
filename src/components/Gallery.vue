@@ -42,9 +42,9 @@ const rokkaResponse: RokkaResponse = await useRokkaAlbum(
   ROKKA_ALBUM_BASE_URL,
   props.albumName
 );
-const rokkaImages = rokkaResponse.items;
-const images: Image[] = useRokkaImages(rokkaImages);
-const favouriteImages: Image[] = useRokkaImages(rokkaImages.slice(-3));
+
+const images: Image[] = useRokkaImages(rokkaResponse.all.items);
+const favouriteImages: Image[] = useRokkaImages(rokkaResponse.favorites.items);
 
 // Make sure always four teaser images are available
 // Either fills up teaser images with images that aren't favourited
