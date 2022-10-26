@@ -23,7 +23,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type Image from '@/classes/Image';
+import type { Image } from '@/classes/types';
 import type { PropType } from 'vue';
 import Download from '../Icons/Download.vue';
 import ExternalLink from './ExternalLink.vue';

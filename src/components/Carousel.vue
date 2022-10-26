@@ -43,7 +43,7 @@ import type { PropType } from 'vue';
 import Clickable from './Base/Clickable.vue';
 import Right from './Icons/Right.vue';
 import Left from './Icons/Left.vue';
-import type Image from '@/classes/Image';
+import type { Image } from '@/classes/types';
 import Back from './Icons/Back.vue';
 import CarouselImageItem from './Base/CarouselImageItem.vue';
 import CarouselWithFixedHeight from './Base/CarouselWithFixedHeight.vue';

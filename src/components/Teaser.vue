@@ -21,7 +21,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, type PropType } from 'vue';
-import type Image from '@/classes/Image';
+import type { Image } from '@/classes/types';
 import ClickableImage from './Base/ClickableImage.vue';
 import Rokka from './Icons/Rokka.vue';
 import Clickable from './Base/Clickable.vue';

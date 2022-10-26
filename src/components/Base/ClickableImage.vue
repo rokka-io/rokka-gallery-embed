@@ -10,7 +10,7 @@
   </Clickable>
 </template>
 <script lang="ts" setup>
-import type Image from '@/classes/Image';
+import type { Image } from '@/classes/types';
 import type { PropType } from 'vue';
 import Clickable from './Clickable.vue';
 import { ref, defineExpose } from 'vue';

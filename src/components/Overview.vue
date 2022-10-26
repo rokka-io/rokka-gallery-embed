@@ -16,7 +16,7 @@
 </template>
 <script setup lang="ts">
 import { defineProps, onMounted, type PropType, ref } from 'vue';
-import type Image from '@/classes/Image';
+import type { Image } from '@/classes/types';
 import ClickableImage from './Base/ClickableImage.vue';
 
 const props = defineProps({
