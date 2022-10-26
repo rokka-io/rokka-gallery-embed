@@ -1,5 +1,5 @@
 <template>
-  <Clickable @click="emit('click', image)">
+  <Clickable @click="emit('click', image)" ref="clickableImage">
     <div class="aspect-image">
       <img
         class="object-cover w-full h-full"
@@ -13,6 +13,7 @@
 import type Image from '@/classes/Image';
 import type { PropType } from 'vue';
 import Clickable from './Clickable.vue';
+import { ref, defineExpose } from 'vue';
 
 defineProps({
   image: {
@@ -20,6 +21,9 @@ defineProps({
     required: true,
   },
 });
+
+const clickableImage = ref<InstanceType<typeof Clickable> | null>(null);
+defineExpose({ clickableImage });
 
 const emit = defineEmits(['click']);
 </script>
