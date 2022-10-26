@@ -28,7 +28,7 @@ import Teaser from './Teaser.vue';
 import Overlay from './Base/Overlay.vue';
 import Overview from './Overview.vue';
 import Carousel from './Carousel.vue';
-import { useRokkaAlbum, useRokkaImages } from '@/composables/useRokkaImages';
+import {useFavouriteImages, useRokkaAlbum, useRokkaImages} from '@/composables/useRokkaImages';
 import { ROKKA_ALBUM_BASE_URL } from '@/constants/constants';
 
 const props = defineProps({
@@ -45,19 +45,7 @@ const rokkaResponse: RokkaResponse = await useRokkaAlbum(
 
 const images: Image[] = useRokkaImages(rokkaResponse.all.items);
 const favouriteImages: Image[] = useRokkaImages(rokkaResponse.favorites.items);
-
-// Make sure always four teaser images are available
-// Either fills up teaser images with images that aren't favourited
-// Or return the first 4 favourite images
-const favouriteImageIds = favouriteImages.map((img) => img.id);
-const fixedLengthFavouriteImages =
-  favouriteImages.length < 4
-    ? favouriteImages.concat(
-        images
-          .filter((img) => !favouriteImageIds.includes(img.id))
-          .slice(0, favouriteImages.length - 4)
-      )
-    : favouriteImages.slice(0, 4);
+const fixedLengthFavouriteImages: Image[] = useFavouriteImages(favouriteImages, images)
 
 const openOverlay = ref<'overview' | 'carousel' | null>(null);
 const activeImage = ref<Image>();
