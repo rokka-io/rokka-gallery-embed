@@ -15,9 +15,23 @@
   </div>
 </template>
 <script setup lang="ts">
-import { defineEmits } from 'vue';
+import { defineEmits, onMounted, onUnmounted } from 'vue';
 import Close from '@/components/Icons/Close.vue';
 import Clickable from './Clickable.vue';
 
 const emit = defineEmits(['close']);
+
+onMounted(() => {
+  document.addEventListener('keydown', eventListener);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', eventListener);
+});
+
+const eventListener = (event: KeyboardEvent) => {
+  if (event.key === 'Escape') {
+    emit('close');
+  }
+};
 </script>

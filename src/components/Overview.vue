@@ -3,21 +3,38 @@
     <ClickableImage
       v-for="(image, index) of images"
       :key="index"
+      :ref="
+        (el) => {
+          imagesRef[index] = el;
+        }
+      "
       :image="image"
+      tabindex="0"
       @click="(image) => emit('openImage', image)"
     />
   </div>
 </template>
 <script setup lang="ts">
-import { defineProps, type PropType } from 'vue';
+import { defineProps, onMounted, type PropType, ref } from 'vue';
 import type Image from '@/classes/Image';
 import ClickableImage from './Base/ClickableImage.vue';
 
-defineProps({
+const props = defineProps({
   images: {
     type: Array as PropType<Image[]>,
     required: true,
   },
+  focusImageIndex: {
+    type: Number,
+  },
+});
+
+const imagesRef = ref<InstanceType<typeof ClickableImage>[] | []>([]);
+
+onMounted(() => {
+  if (props.focusImageIndex) {
+    imagesRef.value.at(props.focusImageIndex).clickableImage.$el.focus();
+  }
 });
 
 const emit = defineEmits(['openImage']);

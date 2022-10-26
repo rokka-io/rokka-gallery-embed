@@ -7,7 +7,10 @@
     </div>
     <div class="flex-auto flex flex-col h-full">
       <div class="mb-4 px-4">
-        <Clickable @click="emit('openOverview')">
+        <Clickable
+          @click="emit('openOverview', currentImageIndex)"
+          tabindex="0"
+        >
           <p class="text-white">
             <Back class="inline mr-2" />
             {{ $t('gallery.openOverview') }}
@@ -17,10 +20,13 @@
       <CarouselWithFixedHeight
         ref="carousel"
         :items="images"
-        :current-item="currentSlide"
+        :initial-item="initialSlide"
       >
         <template #slide="{ item }: { item: Image }">
-          <CarouselImageItem :image="item" />
+          <CarouselImageItem
+            :image="item"
+            :download-button-tab-index="downloadButtonTabIndex(item)"
+          />
         </template>
       </CarouselWithFixedHeight>
     </div>
@@ -32,7 +38,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 import type { PropType } from 'vue';
 import Clickable from './Base/Clickable.vue';
 import Right from './Icons/Right.vue';
@@ -56,9 +62,29 @@ const props = defineProps({
 
 const imageIndex = (needleImage: Image) =>
   props.images.findIndex((image) => image.id === needleImage.id);
-const currentSlide = imageIndex(props.image);
+const initialSlide = imageIndex(props.image);
+
+onMounted(() => {
+  document.addEventListener('keydown', eventListener);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', eventListener);
+});
+
+const eventListener = (event: KeyboardEvent) => {
+  if (event.key === 'ArrowRight') {
+    next();
+  }
+  if (event.key === 'ArrowLeft') {
+    prev();
+  }
+};
 
 const carousel = ref(null);
+const currentImageIndex = computed(() => carousel.value.currentSlide());
 const prev = () => carousel.value.prev();
 const next = () => carousel.value.next();
+const downloadButtonTabIndex = (item) =>
+  carousel.value?.currentSlide() === props.images.indexOf(item) ? '0' : '-1';
 </script>
