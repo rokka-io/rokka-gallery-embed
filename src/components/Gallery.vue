@@ -28,7 +28,11 @@ import Teaser from './Teaser.vue';
 import Overlay from './Base/Overlay.vue';
 import Overview from './Overview.vue';
 import Carousel from './Carousel.vue';
-import {useFavouriteImages, useRokkaAlbum, useRokkaImages} from '@/composables/useRokkaImages';
+import {
+  useFavouriteImages,
+  useRokkaAlbum,
+  useRokkaImages,
+} from '@/composables/useRokkaImages';
 import { ROKKA_ALBUM_BASE_URL } from '@/constants/constants';
 
 const props = defineProps({
@@ -45,7 +49,10 @@ const rokkaResponse: RokkaResponse = await useRokkaAlbum(
 
 const images: Image[] = useRokkaImages(rokkaResponse.all.items);
 const favouriteImages: Image[] = useRokkaImages(rokkaResponse.favorites.items);
-const fixedLengthFavouriteImages: Image[] = useFavouriteImages(favouriteImages, images)
+const fixedLengthFavouriteImages: Image[] = useFavouriteImages(
+  favouriteImages,
+  images
+);
 
 const openOverlay = ref<'overview' | 'carousel' | null>(null);
 const activeImage = ref<Image>();

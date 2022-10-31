@@ -13,7 +13,7 @@ export const useFavouriteImages = (
   favouriteImages: Image[],
   allImages: Image[]
 ): Image[] => {
-  console.log(favouriteImages.length)
+  console.log(favouriteImages.length);
   // Make sure always four teaser images are available
   // Either fills up teaser images with images that aren't favourited
   // Or return the first 4 favourite images
