@@ -1,11 +1,15 @@
 import type { Image, RokkaImage, RokkaResponse } from '@/classes/types';
-import { ROKKA_IMAGE_BASE_URL } from '@/constants/constants';
+import { ROKKA_ENDPOINTS } from '@/constants/constants';
 
-export const useRokkaImages = (images: RokkaImage[]): Image[] => {
+export const useImages = (
+  images: RokkaImage[],
+  organization: string
+): Image[] => {
   return images.map((image) => ({
     id: image.hash,
-    url: `${ROKKA_IMAGE_BASE_URL}/${image.hash}/${image.name}`,
+    url: ROKKA_ENDPOINTS.render(image.hash, image.name, organization),
     description: `${image.mimetype} / ${image.name}`,
+    download: ROKKA_ENDPOINTS.download(image.hash, image.name, organization),
   }));
 };
 
@@ -13,7 +17,6 @@ export const useFavouriteImages = (
   favouriteImages: Image[],
   allImages: Image[]
 ): Image[] => {
-  console.log(favouriteImages.length);
   // Make sure always four teaser images are available
   // Either fills up teaser images with images that aren't favourited
   // Or return the first 4 favourite images
@@ -27,13 +30,15 @@ export const useFavouriteImages = (
     : favouriteImages.slice(0, 4);
 };
 
-export const useRokkaAlbum = async (
-  baseUrl: string,
-  albumName: string
+export const useAlbum = async (
+  albumName: string,
+  organization: string
 ): Promise<RokkaResponse> => {
-  const allResponse = await fetch(`${baseUrl}/${albumName}/all.json`);
+  const allResponse = await fetch(
+    ROKKA_ENDPOINTS.album(albumName, organization)
+  );
   const favoritesResponse = await fetch(
-    `${baseUrl}/${albumName}/favorites.json`
+    ROKKA_ENDPOINTS.albumFavourites(albumName, organization)
   );
   return {
     all: await allResponse.json(),

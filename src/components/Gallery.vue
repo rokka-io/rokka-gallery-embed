@@ -30,25 +30,31 @@ import Overview from './Overview.vue';
 import Carousel from './Carousel.vue';
 import {
   useFavouriteImages,
-  useRokkaAlbum,
-  useRokkaImages,
-} from '@/composables/useRokkaImages';
-import { ROKKA_ALBUM_BASE_URL } from '@/constants/constants';
+  useAlbum,
+  useImages,
+} from '@/composables/useRokka';
 
 const props = defineProps({
   albumName: {
     type: String,
     required: true,
   },
+  organization: {
+    type: String,
+    required: true,
+  },
 });
 
-const rokkaResponse: RokkaResponse = await useRokkaAlbum(
-  ROKKA_ALBUM_BASE_URL,
-  props.albumName
+const rokkaResponse: RokkaResponse = await useAlbum(
+  props.albumName,
+  props.organization
 );
 
-const images: Image[] = useRokkaImages(rokkaResponse.all.items);
-const favouriteImages: Image[] = useRokkaImages(rokkaResponse.favorites.items);
+const images: Image[] = useImages(rokkaResponse.all.items, props.organization);
+const favouriteImages: Image[] = useImages(
+  rokkaResponse.favorites.items,
+  props.organization
+);
 const fixedLengthFavouriteImages: Image[] = useFavouriteImages(
   favouriteImages,
   images

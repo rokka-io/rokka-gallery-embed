@@ -2,6 +2,7 @@ export interface Image {
   id: string;
   url: string;
   description: string;
+  download: string;
 }
 
 export interface RokkaResponse {
