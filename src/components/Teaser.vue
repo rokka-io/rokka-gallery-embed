@@ -2,7 +2,7 @@
   <div class="w-full">
     <div class="w-full mb-4 grid grid-cols-4 gap-4">
       <ClickableImage
-        v-for="(image, index) of images.slice(0, 4)"
+        v-for="(image, index) of images"
         :key="index"
         :image="image"
         :tabindex="teaserTabIndex"

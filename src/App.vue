@@ -4,7 +4,7 @@
   </header>
   <main>
     <Suspense>
-      <Gallery album-name="Zurich" />
+      <Gallery album-name="Zurich" organization="gallery-demo" />
     </Suspense>
   </main>
 </template>

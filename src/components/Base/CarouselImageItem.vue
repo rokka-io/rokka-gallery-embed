@@ -10,10 +10,7 @@
     </div>
     <div class="flex-shrink-0 flex justify-between mt-3 px-2">
       <p class="text-white">{{ image.description }}</p>
-      <ExternalLink
-        :to="`${image.url}?download`"
-        :tabindex="downloadButtonTabIndex"
-      >
+      <ExternalLink :to="image.download" :tabindex="downloadButtonTabIndex">
         <p class="text-white">
           <Download class="inline mr-2" />
           {{ $t('gallery.download') }}

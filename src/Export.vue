@@ -1,6 +1,6 @@
 <template>
   <Suspense>
-    <Gallery :album-name="albumName" />
+    <Gallery :organization="organization" :album-name="albumName" />
   </Suspense>
 </template>
 <script setup lang="ts">

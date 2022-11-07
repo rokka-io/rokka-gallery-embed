@@ -1,6 +1,6 @@
 <template>
   <Teaser
-    :images="fixedLengthFavouriteImages"
+    :images="teaser"
     :teaser-tab-index="teaserTabindex"
     @open-image="openImage"
     @open-overview="openOverview"
@@ -22,36 +22,28 @@
   </Overlay>
 </template>
 <script setup lang="ts">
-import type { Image, RokkaResponse } from '@/classes/types';
+import type { Image } from '@/classes/types';
 import { ref, computed } from 'vue';
 import Teaser from './Teaser.vue';
 import Overlay from './Base/Overlay.vue';
 import Overview from './Overview.vue';
 import Carousel from './Carousel.vue';
-import {
-  useFavouriteImages,
-  useRokkaAlbum,
-  useRokkaImages,
-} from '@/composables/useRokkaImages';
-import { ROKKA_ALBUM_BASE_URL } from '@/constants/constants';
+import { useAlbum } from '@/composables/useRokka';
 
 const props = defineProps({
   albumName: {
     type: String,
     required: true,
   },
+  organization: {
+    type: String,
+    required: true,
+  },
 });
 
-const rokkaResponse: RokkaResponse = await useRokkaAlbum(
-  ROKKA_ALBUM_BASE_URL,
-  props.albumName
-);
-
-const images: Image[] = useRokkaImages(rokkaResponse.all.items);
-const favouriteImages: Image[] = useRokkaImages(rokkaResponse.favorites.items);
-const fixedLengthFavouriteImages: Image[] = useFavouriteImages(
-  favouriteImages,
-  images
+const { images, teaser } = await useAlbum(
+  props.albumName,
+  props.organization
 );
 
 const openOverlay = ref<'overview' | 'carousel' | null>(null);
