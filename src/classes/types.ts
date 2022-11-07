@@ -5,14 +5,9 @@ export interface Image {
   download: string;
 }
 
-export interface RokkaResponse {
-  all: RokkaInnerResponse;
-  favorites: RokkaInnerResponse;
-}
-
-export interface RokkaInnerResponse {
-  items: RokkaImage[];
-  total: number;
+export interface Album {
+  images: Image[],
+  teaser: Image[],
 }
 
 export interface RokkaImage {

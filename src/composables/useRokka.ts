@@ -1,7 +1,31 @@
-import type { Image, RokkaImage, RokkaResponse } from '@/classes/types';
-import { ROKKA_ENDPOINTS } from '@/constants/constants';
+import type { Album, Image, RokkaImage } from '@/classes/types';
+import { ROKKA_ENDPOINTS } from '@/constants/endpoints';
 
-export const useImages = (
+export const useAlbum = async (
+  albumName: string,
+  organization: string
+): Promise<Album> => {
+  const allResponse = await fetch(
+    ROKKA_ENDPOINTS.album(albumName, organization)
+  );
+  const favouritesResponse = await fetch(
+    ROKKA_ENDPOINTS.albumFavourites(albumName, organization)
+  );
+
+  const all = await allResponse.json();
+  const favourites = await favouritesResponse.json();
+
+  const allAsImage = useImages(all, organization);
+  const favouritesAsImage = useImages(favourites, organization);
+  const fixedLengthTeaserImages = useTeaser(favouritesAsImage, allAsImage);
+
+  return {
+    images: allAsImage,
+    teaser: fixedLengthTeaserImages,
+  };
+};
+
+const useImages = (
   images: RokkaImage[],
   organization: string
 ): Image[] => {
@@ -13,35 +37,20 @@ export const useImages = (
   }));
 };
 
-export const useFavouriteImages = (
+const useTeaser = (
   favouriteImages: Image[],
-  allImages: Image[]
+  allImages: Image[],
+  size: number = 4,
 ): Image[] => {
   // Make sure always four teaser images are available
   // Either fills up teaser images with images that aren't favourited
   // Or return the first 4 favourite images
   const favouriteImageIds = favouriteImages.map((img) => img.id);
-  return favouriteImages.length < 4
+  return favouriteImages.length < size
     ? favouriteImages.concat(
         allImages
           .filter((img) => !favouriteImageIds.includes(img.id))
-          .slice(0, favouriteImages.length - 4)
+          .slice(0, favouriteImages.length - size)
       )
-    : favouriteImages.slice(0, 4);
-};
-
-export const useAlbum = async (
-  albumName: string,
-  organization: string
-): Promise<RokkaResponse> => {
-  const allResponse = await fetch(
-    ROKKA_ENDPOINTS.album(albumName, organization)
-  );
-  const favoritesResponse = await fetch(
-    ROKKA_ENDPOINTS.albumFavourites(albumName, organization)
-  );
-  return {
-    all: await allResponse.json(),
-    favorites: await favoritesResponse.json(),
-  };
+    : favouriteImages.slice(0, size);
 };
