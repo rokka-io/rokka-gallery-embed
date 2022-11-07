@@ -31,8 +31,14 @@ export default defineConfig({
       ),
       name: "RokkaGallery",
       formats: ['umd'],
-      fileName: "rokka-gallery.js",
-    }
+      fileName: ()  => "rokka-gallery.js",
+    },
+    rollupOptions: {
+      output: {
+        // Renames output CSS file 
+        assetFileNames: "rokka-gallery.[ext]",
+      },
+    },
   },
   define: {
     'process.env': {}
