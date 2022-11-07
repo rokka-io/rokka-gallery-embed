@@ -41,10 +41,7 @@ const props = defineProps({
   },
 });
 
-const { images, teaser } = await useAlbum(
-  props.albumName,
-  props.organization
-);
+const { images, teaser } = await useAlbum(props.albumName, props.organization);
 
 const openOverlay = ref<'overview' | 'carousel' | null>(null);
 const activeImage = ref<Image>();
