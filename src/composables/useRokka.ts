@@ -15,8 +15,8 @@ export const useAlbum = async (
   const all = await allResponse.json();
   const favourites = await favouritesResponse.json();
 
-  const allAsImage = useImages(all, organization);
-  const favouritesAsImage = useImages(favourites, organization);
+  const allAsImage = useImages(all.items, organization);
+  const favouritesAsImage = useImages(favourites.items, organization);
   const fixedLengthTeaserImages = useTeaser(favouritesAsImage, allAsImage);
 
   return {
@@ -50,7 +50,7 @@ const useTeaser = (
     ? favouriteImages.concat(
         allImages
           .filter((img) => !favouriteImageIds.includes(img.id))
-          .slice(0, favouriteImages.length - size)
+          .slice(0, size - favouriteImages.length)
       )
     : favouriteImages.slice(0, size);
 };
