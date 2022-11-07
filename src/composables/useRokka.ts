@@ -25,10 +25,7 @@ export const useAlbum = async (
   };
 };
 
-const useImages = (
-  images: RokkaImage[],
-  organization: string
-): Image[] => {
+const useImages = (images: RokkaImage[], organization: string): Image[] => {
   return images.map((image) => ({
     id: image.hash,
     url: ROKKA_ENDPOINTS.render(image.hash, image.name, organization),
@@ -40,7 +37,7 @@ const useImages = (
 const useTeaser = (
   favouriteImages: Image[],
   allImages: Image[],
-  size: number = 4,
+  size: number = 4
 ): Image[] => {
   // Make sure always four teaser images are available
   // Either fills up teaser images with images that aren't favourited

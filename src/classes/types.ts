@@ -6,8 +6,8 @@ export interface Image {
 }
 
 export interface Album {
-  images: Image[],
-  teaser: Image[],
+  images: Image[];
+  teaser: Image[];
 }
 
 export interface RokkaImage {
