@@ -29,18 +29,18 @@ export default defineConfig({
         dirname(fileURLToPath(import.meta.url)),
         './src/export.ts'
       ),
-      name: "RokkaGallery",
+      name: 'RokkaGallery',
       formats: ['umd'],
-      fileName: ()  => "rokka-gallery.js",
+      fileName: () => 'rokka-gallery.js',
     },
     rollupOptions: {
       output: {
-        // Renames output CSS file 
-        assetFileNames: "rokka-gallery.[ext]",
+        // Renames output CSS file
+        assetFileNames: 'rokka-gallery.[ext]',
       },
     },
   },
   define: {
-    'process.env': {}
-  }
+    'process.env': {},
+  },
 });
