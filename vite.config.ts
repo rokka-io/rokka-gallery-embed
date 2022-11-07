@@ -23,4 +23,18 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  build: {
+    lib: {
+      entry: resolve(
+        dirname(fileURLToPath(import.meta.url)),
+        './src/export.ts'
+      ),
+      name: "RokkaGallery",
+      formats: ['umd'],
+      fileName: "rokka-gallery.js",
+    }
+  },
+  define: {
+    'process.env': {}
+  }
 });
