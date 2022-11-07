@@ -6,5 +6,6 @@
     "gallery": {
         "openOverview": "Übersicht",
         "download": "Download"
-    }
+    },
+    "error": "Das Album konnte nicht geladen werden"
 }

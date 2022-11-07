@@ -1,25 +1,28 @@
 <template>
-  <Teaser
-    :images="teaser"
-    :teaser-tab-index="teaserTabindex"
-    @open-image="openImage"
-    @open-overview="openOverview"
-  />
-  <Overlay v-if="openOverlay" @close="close">
-    <Overview
-      v-if="openOverlay === 'overview'"
-      :images="images"
-      :focus-image-index="overviewFocusImageIndex"
+  <div v-if="!error">
+    <Teaser
+      :images="teaser"
+      :teaser-tab-index="teaserTabindex"
       @open-image="openImage"
-    />
-
-    <Carousel
-      v-if="openOverlay === 'carousel'"
-      :images="images"
-      :image="activeImage"
       @open-overview="openOverview"
     />
-  </Overlay>
+    <Overlay v-if="openOverlay" @close="close">
+      <Overview
+        v-if="openOverlay === 'overview'"
+        :images="images"
+        :focus-image-index="overviewFocusImageIndex"
+        @open-image="openImage"
+      />
+
+      <Carousel
+        v-if="openOverlay === 'carousel'"
+        :images="images"
+        :image="activeImage"
+        @open-overview="openOverview"
+      />
+    </Overlay>
+  </div>
+  <Error v-else />
 </template>
 <script setup lang="ts">
 import type { Image } from '@/classes/types';
@@ -29,6 +32,7 @@ import Overlay from './Base/Overlay.vue';
 import Overview from './Overview.vue';
 import Carousel from './Carousel.vue';
 import { useAlbum } from '@/composables/useRokka';
+import Error from './Error.vue';
 
 const props = defineProps({
   albumName: {
@@ -41,10 +45,14 @@ const props = defineProps({
   },
 });
 
-const { images, teaser } = await useAlbum(
+
+const album = await useAlbum(
   props.albumName,
   props.organization
-);
+).catch(() => ({images: [], teaser: []}));
+const { images, teaser } = album;
+
+const error = !images.length;
 
 const openOverlay = ref<'overview' | 'carousel' | null>(null);
 const activeImage = ref<Image>();
