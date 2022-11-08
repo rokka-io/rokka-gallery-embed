@@ -85,6 +85,6 @@ const carousel = ref(null);
 const currentImageIndex = computed(() => carousel.value.currentSlide());
 const prev = () => carousel.value.prev();
 const next = () => carousel.value.next();
-const downloadButtonTabIndex = (item) =>
-  carousel.value?.currentSlide() === props.images.indexOf(item) ? '0' : '-1';
+const downloadButtonTabIndex = (item: Image) =>
+  carousel.value.currentSlide() === props.images.indexOf(item) ? '0' : '-1';
 </script>

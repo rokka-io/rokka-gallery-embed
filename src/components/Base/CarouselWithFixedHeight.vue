@@ -18,7 +18,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import Flicking from '@egjs/vue3-flicking';
+import Flicking, { MOVE_TYPE } from '@egjs/vue3-flicking';
 import '@egjs/vue3-flicking/dist/flicking.css';
 import { ref, onMounted, onUnmounted, type PropType } from 'vue';
 
@@ -36,7 +36,7 @@ const props = defineProps({
 const options = {
   circular: true,
   panelsPerView: 1,
-  moveType: 'snap',
+  moveType: MOVE_TYPE.SNAP,
   deceleration: 0.25,
   defaultIndex: props.initialItem,
   autoResize: true,
@@ -48,7 +48,7 @@ const options = {
 const slider = ref(null);
 const prev = () => (!slider.value.animating ? slider.value.prev() : null);
 const next = () => (!slider.value.animating ? slider.value.next() : null);
-const currentSlide = () => slider.value?.index;
+const currentSlide = () => slider.value.index;
 defineExpose({ prev, next, currentSlide });
 
 // Read height out from Parent container
@@ -56,7 +56,7 @@ defineExpose({ prev, next, currentSlide });
 // so it takes up the max space available
 const imageHeight = ref(0);
 const sizer = ref(null);
-const setSize = () => (imageHeight.value = sizer.value?.clientHeight);
+const setSize = () => (imageHeight.value = sizer.value.clientHeight);
 
 onMounted(() => setSize() && addEventListener('resize', setSize));
 onUnmounted(() => removeEventListener('resize', setSize));
