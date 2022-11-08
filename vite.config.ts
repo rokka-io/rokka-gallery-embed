@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { resolve, dirname } from 'node:path';
 import vueI18n from '@intlify/vite-plugin-vue-i18n';
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,6 +18,7 @@ export default defineConfig({
         './src/lang/**'
       ),
     }),
+    cssInjectedByJsPlugin(),
   ],
   resolve: {
     alias: {
@@ -32,12 +34,6 @@ export default defineConfig({
       name: 'RokkaGallery',
       formats: ['umd'],
       fileName: () => 'rokka-gallery.js',
-    },
-    rollupOptions: {
-      output: {
-        // Renames output CSS file
-        assetFileNames: 'rokka-gallery.[ext]',
-      },
     },
   },
   define: {
