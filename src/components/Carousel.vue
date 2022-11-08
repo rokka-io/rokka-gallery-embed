@@ -82,9 +82,9 @@ const eventListener = (event: KeyboardEvent) => {
 };
 
 const carousel = ref(null);
-const currentImageIndex = computed(() => carousel.value.currentSlide());
-const prev = () => carousel.value.prev();
-const next = () => carousel.value.next();
+const currentImageIndex = computed(() => carousel.value?.currentSlide());
+const prev = () => carousel.value?.prev();
+const next = () => carousel.value?.next();
 const downloadButtonTabIndex = (item: Image) =>
-  carousel.value.currentSlide() === props.images.indexOf(item) ? '0' : '-1';
+  carousel.value?.currentSlide() === props.images.indexOf(item) ? '0' : '-1';
 </script>

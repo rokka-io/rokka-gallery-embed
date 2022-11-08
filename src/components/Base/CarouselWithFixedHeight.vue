@@ -46,9 +46,9 @@ const options = {
 };
 
 const slider = ref(null);
-const prev = () => (!slider.value.animating ? slider.value.prev() : null);
-const next = () => (!slider.value.animating ? slider.value.next() : null);
-const currentSlide = () => slider.value.index;
+const prev = () => (!slider.value?.animating ? slider.value?.prev() : null);
+const next = () => (!slider.value?.animating ? slider.value?.next() : null);
+const currentSlide = () => slider.value?.index;
 defineExpose({ prev, next, currentSlide });
 
 // Read height out from Parent container
@@ -56,7 +56,7 @@ defineExpose({ prev, next, currentSlide });
 // so it takes up the max space available
 const imageHeight = ref(0);
 const sizer = ref(null);
-const setSize = () => (imageHeight.value = sizer.value.clientHeight);
+const setSize = () => (imageHeight.value = sizer.value?.clientHeight);
 
 onMounted(() => setSize() && addEventListener('resize', setSize));
 onUnmounted(() => removeEventListener('resize', setSize));
