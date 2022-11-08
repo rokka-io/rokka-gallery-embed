@@ -21,7 +21,7 @@
 import Flicking, { MOVE_TYPE } from '@egjs/vue3-flicking';
 import type { VueFlicking } from '@egjs/vue3-flicking/declaration/types';
 import '@egjs/vue3-flicking/dist/flicking.css';
-import { ref, onMounted, onUnmounted, type PropType, type ComponentPublicInstance } from 'vue';
+import { ref, onMounted, onUnmounted, type PropType } from 'vue';
 
 const props = defineProps({
   items: {
