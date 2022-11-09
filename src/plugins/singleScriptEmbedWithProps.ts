@@ -13,7 +13,7 @@ export default (fileName: string, objectName: string) => ({
 const IIFE_WRAPPER = (inner: string, objectName: string) => `
 (function () {
     if(!window.${objectName}) {
-        ${inner}
+        ${inner};
         window.${objectName} = ${objectName};
     }
     
