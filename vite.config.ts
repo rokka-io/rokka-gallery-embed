@@ -24,7 +24,7 @@ export default defineConfig({
     }),
     cssInjectedByJsPlugin({topExecutionPriority:false}),
     // Has to be loaded last
-    singleScriptEmbedWithProps(OUTPUT_FILENAME, OUTPUT_OBJECT_NAME),
+    singleScriptEmbedWithProps(),
   ],
   resolve: {
     alias: {

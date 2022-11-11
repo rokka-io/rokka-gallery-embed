@@ -1,12 +1,12 @@
 import type { OutputChunk } from 'rollup';
 
-export default (fileName: string, objectName: string) => ({
+export default () => ({
     name: 'single-script-embed-with-props',
     apply: 'build',
     enforce: 'post',
     generateBundle: async (opts, bundle) => {
-        const jsFile = bundle[fileName] as OutputChunk;
-        jsFile.code = IIFE_WRAPPER(jsFile.code, objectName)
+        const jsFile = bundle[opts.entryFileNames] as OutputChunk;
+        jsFile.code = IIFE_WRAPPER(jsFile.code, opts.name);
     }
 })
 
