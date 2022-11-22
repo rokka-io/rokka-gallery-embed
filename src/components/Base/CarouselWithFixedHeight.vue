@@ -46,7 +46,7 @@ const options = {
   autoInit: true,
 };
 
-const slider = ref<VueFlicking>();
+const slider = ref<VueFlicking | null>();
 const prev = () => (!slider.value?.animating ? slider.value?.prev() : null);
 const next = () => (!slider.value?.animating ? slider.value?.next() : null);
 const currentSlide = () => slider.value?.index;
@@ -55,8 +55,8 @@ defineExpose({ prev, next, currentSlide });
 // Read height out from Parent container
 // div is "empty" since child is absolute
 // so it takes up the max space available
-const imageHeight = ref(0);
-const sizer = ref<HTMLElement>();
+const imageHeight = ref<number>(0);
+const sizer = ref<HTMLDivElement | null>();
 const setSize = () => (imageHeight.value = sizer.value?.clientHeight ?? 0);
 
 onMounted(() => setSize() && addEventListener('resize', setSize));

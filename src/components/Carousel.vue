@@ -81,7 +81,7 @@ const eventListener = (event: KeyboardEvent) => {
   }
 };
 
-const carousel = ref<InstanceType<typeof CarouselWithFixedHeight>>();
+const carousel = ref<InstanceType<typeof CarouselWithFixedHeight> | null>();
 const currentImageIndex = computed(() => carousel.value?.currentSlide());
 const prev = () => carousel.value?.prev();
 const next = () => carousel.value?.next();
