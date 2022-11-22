@@ -1,5 +1,5 @@
 import type { Album, Image, RokkaImage } from '@/classes/types';
-import { ROKKA_ENDPOINTS } from '@/constants/endpoints';
+import ROKKA_ENDPOINTS from '@/constants/endpoints';
 
 export const useAlbum = async (
   albumName: string,
