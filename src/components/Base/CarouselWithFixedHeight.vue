@@ -1,6 +1,5 @@
 <template>
   <div
-    class="flex-auto relative"
     ref="sizer"
     :style="{ '--slider-height': `${imageHeight}px` }"
   >

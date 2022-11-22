@@ -1,11 +1,11 @@
 <template>
-  <div class="flex items-center h-full w-full">
+  <div class="autosize-parent items-center">
     <div class="md:mx-4">
       <Clickable @click="prev">
         <Left />
       </Clickable>
     </div>
-    <div class="flex-auto flex flex-col h-full">
+    <div class="autosize autosize-vertical-parent">
       <div class="mb-4 px-4">
         <Clickable
           @click="emit('openOverview', currentImageIndex)"
@@ -21,6 +21,7 @@
         ref="carousel"
         :items="images"
         :initial-item="initialSlide"
+        class="autosize"
       >
         <template #slide="{ item }: { item: Image }">
           <CarouselImageItem
@@ -47,6 +48,7 @@ import type { Image } from '@/classes/types';
 import Back from './Icons/Back.vue';
 import CarouselImageItem from './Base/CarouselImageItem.vue';
 import CarouselWithFixedHeight from './Base/CarouselWithFixedHeight.vue';
+import '@/base.css';
 
 const emit = defineEmits(['openOverview']);
 const props = defineProps({
