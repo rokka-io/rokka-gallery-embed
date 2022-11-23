@@ -36,7 +36,7 @@ const eventListener = (event: KeyboardEvent) => {
 };
 </script>
 <style lang="scss">
-@import '@/mediaqueries.scss';
+@import '@/scss/mediaqueries.scss';
 
 .rokka-gallery {
   &-overlay {

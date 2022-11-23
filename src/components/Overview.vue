@@ -40,7 +40,7 @@ onMounted(() => {
 const emit = defineEmits(['openImage']);
 </script>
 <style lang="scss">
-@import '@/mediaqueries.scss';
+@import '@/scss/mediaqueries.scss';
 
 .rokka-gallery {
   &-overview {

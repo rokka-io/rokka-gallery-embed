@@ -90,7 +90,7 @@ const downloadButtonTabIndex = (item) =>
   carousel.value?.currentSlide() === props.images.indexOf(item) ? '0' : '-1';
 </script>
 <style lang="scss">
-@import '@/mediaqueries.scss';
+@import '@/scss/mediaqueries.scss';
 
 .rokka-gallery {
   &-carousel {
