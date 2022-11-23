@@ -12,6 +12,7 @@
   "dependencies": {
     "@egjs/vue3-flicking": "^4.10.0",
     "sass": "^1.56.1",
+    "vite-plugin-css-injected-by-js": "^2.1.1",
     "vue": "^3.2.38",
     "vue-i18n": "^9.2.2"
   },

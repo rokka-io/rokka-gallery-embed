@@ -1,7 +1,7 @@
 <template>
   <Suspense>
     <div class="rokka-gallery rokka-gallery-app--container">
-      <Gallery :organization="organization" :album-name="albumName" />
+      <Gallery :organization="org" :album-name="album" />
     </div>
   </Suspense>
 </template>
@@ -10,11 +10,11 @@ import '@/scss/base.scss';
 import Gallery from './components/Gallery.vue';
 
 defineProps({
-  organization: {
+  org: {
     type: String,
     required: true,
   },
-  albumName: {
+  album: {
     type: String,
     required: true,
   },

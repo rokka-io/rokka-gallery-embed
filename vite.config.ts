@@ -5,6 +5,11 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { resolve, dirname } from 'node:path';
 import vueI18n from '@intlify/vite-plugin-vue-i18n';
+import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
+import singleScriptEmbedWithProps from './src/plugins/singleScriptEmbedWithProps';
+
+const OUTPUT_OBJECT_NAME = 'RokkaGallery';
+const OUTPUT_FILENAME = 'rokka-gallery.js';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,6 +22,9 @@ export default defineConfig({
         './src/lang/**'
       ),
     }),
+    cssInjectedByJsPlugin({topExecutionPriority:false}),
+    // Has to be loaded last
+    singleScriptEmbedWithProps(),
   ],
   resolve: {
     alias: {
@@ -29,15 +37,10 @@ export default defineConfig({
         dirname(fileURLToPath(import.meta.url)),
         './src/export.ts'
       ),
-      name: 'RokkaGallery',
-      formats: ['umd'],
-      fileName: () => 'rokka-gallery.js',
-    },
-    rollupOptions: {
-      output: {
-        // Renames output CSS file
-        assetFileNames: 'rokka-gallery.[ext]',
-      },
+      name: OUTPUT_OBJECT_NAME,
+      formats: ['iife'],
+      fileName: () => OUTPUT_FILENAME,
+        
     },
   },
   define: {
