@@ -1,11 +1,15 @@
 <template>
-  <div class="rokka-gallery-flex--autosize-parent rokka-gallery-carousel--parent">
+  <div
+    class="rokka-gallery-flex--autosize-parent rokka-gallery-carousel--parent"
+  >
     <div class="rokka-gallery-carousel--nav-arrow">
       <Clickable @click="prev">
         <Left />
       </Clickable>
     </div>
-    <div class="rokka-gallery-flex--autosize rokka-gallery-flex--autosize-vertical-parent">
+    <div
+      class="rokka-gallery-flex--autosize rokka-gallery-flex--autosize-vertical-parent"
+    >
       <div class="rokka-gallery-carousel--back-to-overview">
         <Clickable
           @click="emit('openOverview', currentImageIndex)"
@@ -107,7 +111,7 @@ const downloadButtonTabIndex = (item) =>
       padding-left: 16px;
       padding-right: 16px;
       margin-bottom: 16px;
-    } 
+    }
   }
 }
 </style>

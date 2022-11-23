@@ -1,9 +1,9 @@
 <template>
-  <header style="margin:32px;">
+  <header style="margin: 32px">
     <h1>ROKKA GALLERY EMBED</h1>
   </header>
   <main>
-    <Export album-name="Zurich" organization="gallery-demo"/>
+    <Export album-name="Zurich" organization="gallery-demo" />
   </main>
 </template>
 <script lang="ts" setup>

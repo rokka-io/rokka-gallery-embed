@@ -1,6 +1,10 @@
 <template>
-  <div class="rokka-gallery-carousel-item--parent rokka-gallery-flex--autosize-vertical-parent">
-    <div class="rokka-gallery-carousel-item--image-container rokka-gallery-flex--autosize">
+  <div
+    class="rokka-gallery-carousel-item--parent rokka-gallery-flex--autosize-vertical-parent"
+  >
+    <div
+      class="rokka-gallery-carousel-item--image-container rokka-gallery-flex--autosize"
+    >
       <img
         class="rokka-gallery-carousel-item--image"
         @dragstart.prevent
@@ -8,7 +12,9 @@
         :alt="image.description"
       />
     </div>
-    <div class="rokka-gallery-carousel-item--caption rokka-gallery-base--space-between">
+    <div
+      class="rokka-gallery-carousel-item--caption rokka-gallery-base--space-between"
+    >
       <p>{{ image.description }}</p>
       <ExternalLink :to="image.download" :tabindex="downloadButtonTabIndex">
         <p>
@@ -40,12 +46,12 @@ defineProps({
   &-carousel-item {
     &--parent {
       padding-left: 16px;
-      padding-right: 16px; 
+      padding-right: 16px;
     }
     &--image-container {
-      overflow:hidden;
+      overflow: hidden;
       border-radius: 4px;
-      background-color: rgb(255 255 255 / .05);
+      background-color: rgb(255 255 255 / 0.05);
     }
     &--image {
       object-fit: contain;

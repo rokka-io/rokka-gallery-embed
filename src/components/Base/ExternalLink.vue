@@ -4,7 +4,6 @@
   </a>
 </template>
 <script setup lang="ts">
-
 defineProps({
   to: {
     type: String,

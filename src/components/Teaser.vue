@@ -14,7 +14,10 @@
         <p>{{ $t('teaser.openOverview') }}</p>
       </Clickable>
       <ExternalLink to="https://rokka.io" :tabindex="teaserTabIndex">
-        <p>{{ $t('teaser.poweredBy') }}<Rokka class="rokka-gallery-base--inline-icon" /></p>
+        <p>
+          {{ $t('teaser.poweredBy')
+          }}<Rokka class="rokka-gallery-base--inline-icon" />
+        </p>
       </ExternalLink>
     </div>
   </div>
@@ -51,5 +54,5 @@ const emit = defineEmits(['openImage', 'openOverview']);
       margin-bottom: 16px;
     }
   }
-} 
+}
 </style>

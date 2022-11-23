@@ -1,14 +1,14 @@
 <template>
-  <div
-    class="rokka-gallery-overlay--overlay"
-  >
+  <div class="rokka-gallery-overlay--overlay">
     <div class="rokka-gallery-flex--autosize-vertical-parent">
       <div class="rokka-gallery-overlay--close-button">
         <Clickable @click="emit('close')">
           <Close />
         </Clickable>
       </div>
-      <div class="rokka-gallery-flex--autosize rokka-gallery-overlay--overflow-y-auto">
+      <div
+        class="rokka-gallery-flex--autosize rokka-gallery-overlay--overflow-y-auto"
+      >
         <slot></slot>
       </div>
     </div>
@@ -48,14 +48,14 @@ const eventListener = (event: KeyboardEvent) => {
       left: 0;
 
       z-index: 999999999;
-      background-color: rgb(0 0 0 / .95);
+      background-color: rgb(0 0 0 / 0.95);
       // Make all text inside overlay white
       color: rgb(255, 255, 255);
 
-      padding:16px;
+      padding: 16px;
       padding-bottom: 48px;
       @include screen-md {
-        padding:48px;
+        padding: 48px;
         padding-bottom: 80px;
       }
     }
