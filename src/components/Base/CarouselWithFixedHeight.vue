@@ -18,7 +18,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import Flicking from '@egjs/vue3-flicking';
+import Flicking, { MOVE_TYPE } from '@egjs/vue3-flicking';
+import type { VueFlicking } from '@egjs/vue3-flicking/declaration/types';
 import '@egjs/vue3-flicking/dist/flicking.css';
 import { ref, onMounted, onUnmounted, type PropType } from 'vue';
 
@@ -36,7 +37,7 @@ const props = defineProps({
 const options = {
   circular: true,
   panelsPerView: 1,
-  moveType: 'snap',
+  moveType: MOVE_TYPE.SNAP,
   deceleration: 0.25,
   defaultIndex: props.initialItem,
   autoResize: true,
@@ -45,18 +46,18 @@ const options = {
   autoInit: true,
 };
 
-const slider = ref(null);
-const prev = () => (!slider.value.animating ? slider.value.prev() : null);
-const next = () => (!slider.value.animating ? slider.value.next() : null);
+const slider = ref<VueFlicking | null>();
+const prev = () => (!slider.value?.animating ? slider.value?.prev() : null);
+const next = () => (!slider.value?.animating ? slider.value?.next() : null);
 const currentSlide = () => slider.value?.index;
 defineExpose({ prev, next, currentSlide });
 
 // Read height out from Parent container
 // div is "empty" since child is absolute
 // so it takes up the max space available
-const imageHeight = ref(0);
-const sizer = ref(null);
-const setSize = () => (imageHeight.value = sizer.value?.clientHeight);
+const imageHeight = ref<number>(0);
+const sizer = ref<HTMLDivElement | null>();
+const setSize = () => (imageHeight.value = sizer.value?.clientHeight ?? 0);
 
 onMounted(() => setSize() && addEventListener('resize', setSize));
 onUnmounted(() => removeEventListener('resize', setSize));

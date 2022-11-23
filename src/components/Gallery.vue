@@ -54,12 +54,12 @@ const { images, teaser } = album;
 const error = !images.length;
 
 const openOverlay = ref<'overview' | 'carousel' | null>(null);
-const activeImage = ref<Image>();
-const overviewFocusImageIndex = ref<Number>(0);
+const activeImage = ref<Image | null>();
+const overviewFocusImageIndex = ref<number>(0);
 
 const close = () => (openOverlay.value = null);
 
-const openOverview = (imageIndex: Number) => {
+const openOverview = (imageIndex: number) => {
   overviewFocusImageIndex.value = imageIndex;
   openOverlay.value = 'overview';
 };
