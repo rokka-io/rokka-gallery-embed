@@ -1,17 +1,17 @@
 <template>
   <Suspense>
-    <Gallery :organization="organization" :album-name="albumName" />
+    <Gallery :organization="org" :album-name="album" />
   </Suspense>
 </template>
 <script setup lang="ts">
 import Gallery from './components/Gallery.vue';
 
 defineProps({
-  organization: {
+  org: {
     type: String,
     required: true,
   },
-  albumName: {
+  album: {
     type: String,
     required: true,
   },
