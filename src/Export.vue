@@ -1,6 +1,6 @@
 <template>
   <Suspense>
-    <div class="rokka-gallery rokka-gallery-app--container">
+    <div class="rokka-gallery">
       <Gallery :organization="org" :album-name="album" />
     </div>
   </Suspense>
@@ -20,13 +20,3 @@ defineProps({
   },
 });
 </script>
-<style lang="scss">
-.rokka-gallery {
-  &-app {
-    &--container {
-      margin-top: 16px;
-      padding-top: 16px;
-    }
-  }
-}
-</style>

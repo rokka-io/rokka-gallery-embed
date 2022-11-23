@@ -15,6 +15,9 @@
             margin-right: 4px;
             margin-left: 4px;
         }
+        &--no-line-break {
+            white-space: nowrap;
+        }
     }
     /* AUTOMATIC CONTAINER SIZING (FOR OVERLAY) */
     &-flex {

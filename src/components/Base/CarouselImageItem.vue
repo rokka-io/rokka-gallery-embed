@@ -17,7 +17,7 @@
     >
       <p>{{ image.description }}</p>
       <ExternalLink :to="image.download" :tabindex="downloadButtonTabIndex">
-        <p>
+        <p class="rokka-gallery-base--no-line-break">
           <Download class="rokka-gallery-base--inline-icon" />
           {{ $t('gallery.download') }}
         </p>
