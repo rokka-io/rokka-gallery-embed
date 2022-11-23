@@ -3,10 +3,10 @@
     ref="sizer"
     :style="{ '--slider-height': `${imageHeight}px` }"
   >
-    <div class="absolute w-full">
+    <div class="rokka-gallery-carousel-w-fixed-h--sizer">
       <Flicking ref="slider" :options="options">
         <div
-          class="w-full h-[var(--slider-height)]"
+          :style="{height: 'var(--slider-height)'}"
           v-for="(item, index) of items"
           :key="index"
         >
@@ -60,3 +60,13 @@ const setSize = () => (imageHeight.value = sizer.value?.clientHeight);
 onMounted(() => setSize() && addEventListener('resize', setSize));
 onUnmounted(() => removeEventListener('resize', setSize));
 </script>
+<style lang="scss">
+.rokka-gallery {
+  &-carousel-w-fixed-h {
+    &--sizer {
+      position: absolute;
+      width: 100%;
+    }
+  }
+}
+</style>

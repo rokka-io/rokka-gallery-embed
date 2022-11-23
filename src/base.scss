@@ -1,18 +1,17 @@
 .rokka-gallery {
     &-base {
-        &--fullwidth {
-            width: 100%;
-        }
-        &--fullheight {
-            height: 100%;
-        }
         &--space-between {
             display: flex;
             justify-content: space-between;
         }
         &--pointer {
             cursor: pointer;
-        } 
+        }
+        &--inline-icon {
+            display: inline;
+            margin-right: 4px;
+            margin-left: 4px;
+        }
     }
     &-flex {
         &--autosize-parent {

@@ -1,18 +1,18 @@
 <template>
-  <div class="autosize-parent items-center">
-    <div class="md:mx-4">
+  <div class="rokka-gallery-flex--autosize-parent rokka-gallery-carousel--parent">
+    <div class="rokka-gallery-carousel--nav-arrow">
       <Clickable @click="prev">
         <Left />
       </Clickable>
     </div>
-    <div class="autosize autosize-vertical-parent">
-      <div class="mb-4 px-4">
+    <div class="rokka-gallery-flex--autosize rokka-gallery-flex--autosize-vertical-parent">
+      <div class="rokka-gallery-carousel--back-to-overview">
         <Clickable
           @click="emit('openOverview', currentImageIndex)"
           tabindex="0"
         >
-          <p class="text-white">
-            <Back class="inline mr-2" />
+          <p>
+            <Back class="rokka-gallery-base--inline-icon" />
             {{ $t('gallery.openOverview') }}
           </p>
         </Clickable>
@@ -21,7 +21,7 @@
         ref="carousel"
         :items="images"
         :initial-item="initialSlide"
-        class="autosize"
+        class="rokka-gallery-flex--autosize"
       >
         <template #slide="{ item }: { item: Image }">
           <CarouselImageItem
@@ -31,7 +31,7 @@
         </template>
       </CarouselWithFixedHeight>
     </div>
-    <div class="md:mx-4">
+    <div class="rokka-gallery-carousel--nav-arrow">
       <Clickable @click="next">
         <Right />
       </Clickable>
@@ -48,7 +48,6 @@ import type { Image } from '@/classes/types';
 import Back from './Icons/Back.vue';
 import CarouselImageItem from './Base/CarouselImageItem.vue';
 import CarouselWithFixedHeight from './Base/CarouselWithFixedHeight.vue';
-import '@/base.css';
 
 const emit = defineEmits(['openOverview']);
 const props = defineProps({
@@ -90,3 +89,25 @@ const next = () => carousel.value.next();
 const downloadButtonTabIndex = (item) =>
   carousel.value?.currentSlide() === props.images.indexOf(item) ? '0' : '-1';
 </script>
+<style lang="scss">
+@import '@/mediaqueries.scss';
+
+.rokka-gallery {
+  &-carousel {
+    &--parent {
+      align-items: center;
+    }
+    &--nav-arrow {
+      @include screen-md {
+        margin-left: 16px;
+        margin-right: 16px;
+      }
+    }
+    &--back-to-overview {
+      padding-left: 16px;
+      padding-right: 16px;
+      margin-bottom: 16px;
+    } 
+  }
+}
+</style>

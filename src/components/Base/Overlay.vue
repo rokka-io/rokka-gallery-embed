@@ -1,14 +1,14 @@
 <template>
   <div
-    class="fixed inset-0 z-10 bg-black bg-opacity-95 p-4 pb-12 md:p-12 md:pb-20"
+    class="rokka-gallery-overlay--overlay"
   >
-    <div class="autosize-vertical-parent">
-      <div class="flex justify-end pb-8">
+    <div class="rokka-gallery-flex--autosize-vertical-parent">
+      <div class="rokka-gallery-overlay--close-button">
         <Clickable @click="emit('close')">
           <Close />
         </Clickable>
       </div>
-      <div class="autosize overflow-y-auto">
+      <div class="rokka-gallery-flex--autosize rokka-gallery-overlay--overflow-y-auto">
         <slot></slot>
       </div>
     </div>
@@ -18,7 +18,6 @@
 import { defineEmits, onMounted, onUnmounted } from 'vue';
 import Close from '@/components/Icons/Close.vue';
 import Clickable from './Clickable.vue';
-import '@/base.css';
 
 const emit = defineEmits(['close']);
 
@@ -36,3 +35,38 @@ const eventListener = (event: KeyboardEvent) => {
   }
 };
 </script>
+<style lang="scss">
+@import '@/mediaqueries.scss';
+
+.rokka-gallery {
+  &-overlay {
+    &--overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      z-index: 999999999;
+      background-color: rgb(0 0 0 / .95);
+      // Make all text inside overlay white
+      color: rgb(255, 255, 255);
+
+      padding:16px;
+      padding-bottom: 48px;
+      @include screen-md {
+        padding:48px;
+        padding-bottom: 80px;
+      }
+    }
+    &--close-button {
+      display: flex;
+      justify-content: flex-end;
+      padding-bottom: 32px;
+    }
+    &--overflow-y-auto {
+      overflow-y: auto;
+    }
+  }
+}
+</style>
