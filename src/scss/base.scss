@@ -1,4 +1,23 @@
 .rokka-gallery {
+    /* CSS RESETS */
+    /* theese need to be ontop, otherwise */
+    /* they will overwrite other styles   */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        font-weight: normal;
+    }
+
+    a, a:link, a:visited, a:hover, a:active {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* BASE STYLES */
     &-base {
         &--space-between {
             display: flex;
@@ -13,6 +32,7 @@
             margin-left: 4px;
         }
     }
+    /* AUTOMATIC CONTAINER SIZING (FOR OVERLAY) */
     &-flex {
         &--autosize-parent {
             display: flex;
@@ -28,11 +48,5 @@
         &--autosize {
             flex: 1 1 auto;
         }
-    }
-
-    /* CSS RESETS */
-    a, a:link, a:visited, a:hover, a:active {
-        text-decoration: none;
-        color: inherit;
     }
 }
