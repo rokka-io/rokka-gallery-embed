@@ -25,7 +25,7 @@ defineProps({
   &-app {
     &--container {
       margin-top: 16px;
-      margin-bottom: 32px;
+      padding-top: 16px;
     }
   }
 }
