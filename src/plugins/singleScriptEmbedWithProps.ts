@@ -1,14 +1,14 @@
 import type { OutputChunk } from 'rollup';
 
 export default () => ({
-    name: 'single-script-embed-with-props',
-    apply: 'build',
-    enforce: 'post',
-    generateBundle: async (opts, bundle) => {
-        const jsFile = bundle[opts.entryFileNames] as OutputChunk;
-        jsFile.code = IIFE_WRAPPER(jsFile.code, opts.name);
-    }
-})
+  name: 'single-script-embed-with-props',
+  apply: 'build',
+  enforce: 'post',
+  generateBundle: async (opts, bundle) => {
+    const jsFile = bundle[opts.entryFileNames] as OutputChunk;
+    jsFile.code = IIFE_WRAPPER(jsFile.code, opts.name);
+  },
+});
 
 const IIFE_WRAPPER = (inner: string, objectName: string) => `
 (function () {
@@ -16,7 +16,7 @@ const IIFE_WRAPPER = (inner: string, objectName: string) => `
         ${inner};
         window.${objectName} = ${objectName};
     }
-    
+
     const attributePrefix = 'data-';
     const data = {};
 
@@ -35,4 +35,4 @@ const IIFE_WRAPPER = (inner: string, objectName: string) => `
     script.parentElement.replaceChild(container, script)
     window.${objectName}.mount('#'+containerId, data);
 })();
-`
+`;

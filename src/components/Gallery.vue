@@ -63,7 +63,7 @@ const teaserTabindex = computed(() =>
 
 const rokkaGalleryCloseEvent = new Event('rokkagallery.close');
 const close = () => {
-  openOverlay.value = null
+  openOverlay.value = null;
   document.dispatchEvent(rokkaGalleryCloseEvent);
 };
 
@@ -71,12 +71,12 @@ const rokkaGalleryOpenEvent = new Event('rokkagallery.open');
 const openOverview = (imageIndex: number) => {
   overviewFocusImageIndex.value = imageIndex;
   openOverlay.value = 'overview';
-  document.dispatchEvent(rokkaGalleryOpenEvent)
+  document.dispatchEvent(rokkaGalleryOpenEvent);
 };
 
 const openImage = (image: Image) => {
   activeImage.value = image;
   openOverlay.value = 'carousel';
-  document.dispatchEvent(rokkaGalleryOpenEvent)
+  document.dispatchEvent(rokkaGalleryOpenEvent);
 };
 </script>

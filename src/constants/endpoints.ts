@@ -1,5 +1,4 @@
-const BASE_URL = (organization: string) =>
-  `https://${organization}.rokka.io`;
+const BASE_URL = (organization: string) => `https://${organization}.rokka.io`;
 const BASE_STACK = 'dynamic/resize-width-600-upscale-false-sharpen-true';
 const DOWNLOAD_STACK = 'dynamic/o-content_disposition-attachment';
 
