@@ -1,15 +1,13 @@
 <template>
-  <header class="mb-52">
-    <h1 class="uppercase font-bold">rokka image gallery</h1>
+  <header style="margin: 32px">
+    <h1>ROKKA GALLERY EMBED</h1>
   </header>
   <main>
-    <Suspense>
-      <Gallery album-name="Zurich" organization="gallery-demo" />
-    </Suspense>
+    <Export album="Zurich" org="gallery-demo" />
   </main>
 </template>
 <script lang="ts" setup>
-import Gallery from './components/Gallery.vue';
+import Export from './Export.vue';
 </script>
 <style>
 #app {

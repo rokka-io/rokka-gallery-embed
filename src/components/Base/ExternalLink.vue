@@ -1,5 +1,5 @@
 <template>
-  <a class="cursor-pointer" target="_blank" :href="to">
+  <a class="rokka-gallery-base--pointer" target="_blank" :href="to">
     <slot></slot>
   </a>
 </template>

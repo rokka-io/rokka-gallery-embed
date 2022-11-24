@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+  <div class="rokka-gallery-overview--image-grid">
     <ClickableImage
       v-for="(image, index) of images"
       :key="index"
@@ -35,3 +35,23 @@ onMounted(() => {
 
 const emit = defineEmits(['openImage']);
 </script>
+<style lang="scss">
+@import '@/scss/mediaqueries.scss';
+
+.rokka-gallery {
+  &-overview {
+    &--image-grid {
+      display: grid;
+      gap: 16px;
+
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      @include screen-md {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+      @include screen-lg {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+  }
+}
+</style>

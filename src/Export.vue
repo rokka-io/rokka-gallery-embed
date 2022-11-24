@@ -1,9 +1,12 @@
 <template>
   <Suspense>
-    <Gallery :organization="org" :album-name="album" />
+    <div class="rokka-gallery">
+      <Gallery :organization="org" :album-name="album" />
+    </div>
   </Suspense>
 </template>
 <script setup lang="ts">
+import '@/scss/base.scss';
 import Gallery from './components/Gallery.vue';
 
 defineProps({

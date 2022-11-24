@@ -2,7 +2,7 @@
   <a
     @click.capture="$emit('click')"
     @keydown.enter.capture="$emit('click')"
-    class="inline-block cursor-pointer"
+    class="rokka-gallery-base--pointer"
   >
     <slot></slot>
   </a>

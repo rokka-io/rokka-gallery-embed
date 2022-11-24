@@ -1,8 +1,8 @@
 <template>
   <Clickable @click="emit('click', image)" ref="clickableImage">
-    <div class="aspect-image">
+    <div class="rokka-gallery-clickable-image--fixed-aspect-ratio">
       <img
-        class="object-cover w-full h-full"
+        class="rokka-gallery-clickable-image--cover-parent"
         :src="image.url"
         :alt="image.description"
       />
@@ -27,3 +27,17 @@ defineExpose({ clickableImage });
 
 const emit = defineEmits(['click']);
 </script>
+<style lang="scss">
+.rokka-gallery {
+  &-clickable-image {
+    &--fixed-aspect-ratio {
+      aspect-ratio: 14 / 9;
+    }
+    &--cover-parent {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+</style>

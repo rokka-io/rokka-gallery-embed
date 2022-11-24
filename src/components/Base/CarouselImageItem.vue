@@ -1,18 +1,24 @@
 <template>
-  <div class="flex flex-col h-full w-full px-4">
-    <div class="flex-auto overflow-hidden rounded-sm bg-gray-400 bg-opacity-10">
+  <div
+    class="rokka-gallery-carousel-item--parent rokka-gallery-flex--autosize-vertical-parent"
+  >
+    <div
+      class="rokka-gallery-carousel-item--image-container rokka-gallery-flex--autosize"
+    >
       <img
-        class="object-contain w-full h-full"
+        class="rokka-gallery-carousel-item--image"
         @dragstart.prevent
         :src="image.url"
         :alt="image.description"
       />
     </div>
-    <div class="flex-shrink-0 flex justify-between mt-3 px-2">
-      <p class="text-white">{{ image.description }}</p>
+    <div
+      class="rokka-gallery-carousel-item--caption rokka-gallery-base--space-between"
+    >
+      <p>{{ image.description }}</p>
       <ExternalLink :to="image.download" :tabindex="downloadButtonTabIndex">
-        <p class="text-white">
-          <Download class="inline mr-2" />
+        <p class="rokka-gallery-base--no-line-break">
+          <Download class="rokka-gallery-base--inline-icon" />
           {{ $t('gallery.download') }}
         </p>
       </ExternalLink>
@@ -35,3 +41,28 @@ defineProps({
   },
 });
 </script>
+<style lang="scss">
+.rokka-gallery {
+  &-carousel-item {
+    &--parent {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+    &--image-container {
+      overflow: hidden;
+      border-radius: 4px;
+      background-color: rgb(255 255 255 / 0.05);
+    }
+    &--image {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+    &--caption {
+      margin-top: 8px;
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+  }
+}
+</style>

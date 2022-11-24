@@ -1,13 +1,9 @@
 <template>
-  <div
-    class="flex-auto relative"
-    ref="sizer"
-    :style="{ '--slider-height': `${imageHeight}px` }"
-  >
-    <div class="absolute w-full">
+  <div ref="sizer" :style="{ '--rokka-gallery-carousel--slider-height': `${imageHeight}px` }">
+    <div class="rokka-gallery-carousel-w-fixed-h--sizer">
       <Flicking ref="slider" :options="options">
         <div
-          class="w-full h-[var(--slider-height)]"
+          :style="{ height: 'var(--rokka-gallery-carousel--slider-height)' }"
           v-for="(item, index) of items"
           :key="index"
         >
@@ -62,3 +58,13 @@ const setSize = () => (imageHeight.value = sizer.value?.clientHeight ?? 0);
 onMounted(() => setSize() && addEventListener('resize', setSize));
 onUnmounted(() => removeEventListener('resize', setSize));
 </script>
+<style lang="scss">
+.rokka-gallery {
+  &-carousel-w-fixed-h {
+    &--sizer {
+      position: absolute;
+      width: 100%;
+    }
+  }
+}
+</style>

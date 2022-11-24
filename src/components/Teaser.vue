@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full">
-    <div class="w-full mb-4 grid grid-cols-4 gap-4">
+  <div>
+    <div class="rokka-gallery-teaser--preview-images">
       <ClickableImage
         v-for="(image, index) of images"
         :key="index"
@@ -9,12 +9,15 @@
         @click="(image) => emit('openImage', image)"
       />
     </div>
-    <div class="w-full flex justify-between">
+    <div class="rokka-gallery-base--space-between">
       <Clickable @click="emit('openOverview')" :tabindex="teaserTabIndex">
         <p>{{ $t('teaser.openOverview') }}</p>
       </Clickable>
       <ExternalLink to="https://rokka.io" :tabindex="teaserTabIndex">
-        <p>{{ $t('teaser.poweredBy') }}<Rokka class="inline ml-2" /></p>
+        <p class="rokka-gallery-base--no-line-break">
+          {{ $t('teaser.poweredBy')
+          }}<Rokka class="rokka-gallery-base--inline-icon" />
+        </p>
       </ExternalLink>
     </div>
   </div>
@@ -40,3 +43,16 @@ defineProps({
 
 const emit = defineEmits(['openImage', 'openOverview']);
 </script>
+<style lang="scss">
+.rokka-gallery {
+  &-teaser {
+    &--preview-images {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+
+      margin-bottom: 16px;
+    }
+  }
+}
+</style>
