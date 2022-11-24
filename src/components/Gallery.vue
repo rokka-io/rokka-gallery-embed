@@ -57,19 +57,26 @@ const openOverlay = ref<'overview' | 'carousel' | null>(null);
 const activeImage = ref<Image | null>();
 const overviewFocusImageIndex = ref<number>(0);
 
-const close = () => (openOverlay.value = null);
+const teaserTabindex = computed(() =>
+  openOverlay.value === null ? '0' : '-1'
+);
 
+const rokkaGalleryCloseEvent = new Event('rokka-gallery--close');
+const close = () => {
+  openOverlay.value = null
+  document.dispatchEvent(rokkaGalleryCloseEvent);
+};
+
+const rokkaGalleryOpenEvent = new Event('rokka-gallery--open');
 const openOverview = (imageIndex: number) => {
   overviewFocusImageIndex.value = imageIndex;
   openOverlay.value = 'overview';
+  document.dispatchEvent(rokkaGalleryOpenEvent)
 };
 
 const openImage = (image: Image) => {
   activeImage.value = image;
   openOverlay.value = 'carousel';
+  document.dispatchEvent(rokkaGalleryOpenEvent)
 };
-
-const teaserTabindex = computed(() =>
-  openOverlay.value === null ? '0' : '-1'
-);
 </script>
