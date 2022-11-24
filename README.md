@@ -1,7 +1,9 @@
 # Rokka Gallery Embed
 
 ## Usage
+
 To use the Rokka Gallery Embed on your site, embed it with 
+
 ```html
 <script 
     src="/rokka-gallery.js" 
@@ -9,18 +11,25 @@ To use the Rokka Gallery Embed on your site, embed it with
     data-album="your-album"
 ></script>
 ```
-You can either build the project yourself, and host the script on your site, or use a CDN.
+You can either build the project yourself
+and host the script on your site, or use a CDN.
 
 ### API
-You may wish to prevent scrolling on your page, or restrict tabbing for accesibility while the user has opened a Rokka Gallery.
 
-We provide the `rokkaGallery.open` and `rokkaGallery.close` events, you can listen for on the document.
+We provide the following events on the document
+
+- `rokkagallery.open` is triggered when the Overlay is opened
+- `rokkagallery.close` is triggered when the Overlay is closed
+
 ```js
-document.addEventListener('rokkaGallery.open', lockScrollingOnBody) 
-document.addEventListener('rokkaGallery.close', unlockScrollingOnBody)
+document.addEventListener('rokkagallery.open', rokkaOverlayOpened) 
+document.addEventListener('rokkagallery.close', rokkaOverlayClosed)
 ```
 
+You may wish to restrict scrolling or tabbing on your page while the user has opened Rokka Gallery.
+
 ## Development
+
 Clone the repository, and install all dependencies with `npm i`.
 
 Preview the project with `npm run dev`.
@@ -29,5 +38,6 @@ Be careful with this, as some styles may get overwritten by the 'host' page, so 
 Lint the project before committing with `npm run lint`.
 
 ### Build
+
 Build the Rokka Gallery Embed project with `npm run build`. 
 The output file is located at `dist/rokka-gallery.js`.
