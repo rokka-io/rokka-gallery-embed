@@ -1,16 +1,22 @@
 # Rokka Gallery Embed
 
+|            Teaser             |             Overview              |             Carousel             |
+|:-----------------------------:|:---------------------------------:|:--------------------------------:|
+| ![Teaser](.github/Teaser.png) | ![Overview](.github/Overview.png) | ![Gallery](.github/Carousel.png) |
+
 ## Usage
 
-To use the Rokka Gallery Embed on your site, embed it with 
+To use the Rokka Gallery Embed on your site, embed it with
 
 ```html
-<script 
-    src="/rokka-gallery.js" 
-    data-org="your-rokka-organization"
-    data-album="your-album"
+
+<script
+        src="/rokka-gallery.js"
+        data-org="your-rokka-organization"
+        data-album="your-album"
 ></script>
 ```
+
 You can either build the project yourself
 and host the script on your site, or use a CDN.
 
@@ -22,7 +28,7 @@ We provide the following events on the document
 - `rokkagallery.close` is triggered when the Overlay is closed
 
 ```js
-document.addEventListener('rokkagallery.open', rokkaOverlayOpened) 
+document.addEventListener('rokkagallery.open', rokkaOverlayOpened)
 document.addEventListener('rokkagallery.close', rokkaOverlayClosed)
 ```
 
@@ -39,5 +45,5 @@ Lint the project before committing with `npm run lint`.
 
 ### Build
 
-Build the Rokka Gallery Embed project with `npm run build`. 
+Build the Rokka Gallery Embed project with `npm run build`.
 The output file is located at `dist/rokka-gallery.js`.
