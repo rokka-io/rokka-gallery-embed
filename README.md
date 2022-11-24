@@ -12,12 +12,12 @@ To use the Rokka Gallery Embed on your site, embed it with
 You can either build the project yourself, and host the script on your site, or use a CDN.
 
 ### API
-You may wish to prevent scrolling on your page while the user has opened a Rokka Gallery.
+You may wish to prevent scrolling on your page, or restrict tabbing for accesibility while the user has opened a Rokka Gallery.
 
-We provide the `rokka-gallery--open` and `rokka-gallery--close` events, you can listen for on the document.
+We provide the `rokkaGallery.open` and `rokkaGallery.close` events, you can listen for on the document.
 ```js
-document.addEventListener('rokka-gallery--open', lockScrollingOnBody) 
-document.addEventListener('rokka-gallery--close', unlockScrollingOnBody)
+document.addEventListener('rokkaGallery.open', lockScrollingOnBody) 
+document.addEventListener('rokkaGallery.close', unlockScrollingOnBody)
 ```
 
 ## Development
