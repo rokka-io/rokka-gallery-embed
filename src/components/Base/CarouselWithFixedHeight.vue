@@ -1,9 +1,9 @@
 <template>
-  <div ref="sizer" :style="{ '--slider-height': `${imageHeight}px` }">
+  <div ref="sizer" :style="{ '--rokka-gallery-carousel--slider-height': `${imageHeight}px` }">
     <div class="rokka-gallery-carousel-w-fixed-h--sizer">
       <Flicking ref="slider" :options="options">
         <div
-          :style="{ height: 'var(--slider-height)' }"
+          :style="{ height: 'var(--rokka-gallery-carousel--slider-height)' }"
           v-for="(item, index) of items"
           :key="index"
         >
