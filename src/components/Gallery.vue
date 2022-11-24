@@ -61,13 +61,13 @@ const teaserTabindex = computed(() =>
   openOverlay.value === null ? '0' : '-1'
 );
 
-const rokkaGalleryCloseEvent = new Event('rokkaGallery.close');
+const rokkaGalleryCloseEvent = new Event('rokkagallery.close');
 const close = () => {
   openOverlay.value = null
   document.dispatchEvent(rokkaGalleryCloseEvent);
 };
 
-const rokkaGalleryOpenEvent = new Event('rokkaGallery.open');
+const rokkaGalleryOpenEvent = new Event('rokkagallery.open');
 const openOverview = (imageIndex: number) => {
   overviewFocusImageIndex.value = imageIndex;
   openOverlay.value = 'overview';
