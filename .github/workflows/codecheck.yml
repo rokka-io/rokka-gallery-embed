@@ -17,12 +17,14 @@ jobs:
   lint:
     needs: install
     name: Lint
+    runs-on: ubuntu-latest
     steps:
       - name: Run linter
         run: npm run lint
   build:
     needs: install
     name: Build
+    runs-on: ubuntu-latest
     steps:
       - name: Run Build
         run: npm run build
