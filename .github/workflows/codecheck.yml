@@ -16,11 +16,11 @@ jobs:
       run: npm ci
   lint:
     name: Lint
-    runs-on: ubuntu-latest
+    needs: install
     - name: Run linter
       run: npm run lint
   build:
     name: Build
-    runs-on: ubuntu-latest
+    needs: install
     - name: Run Build
       run: npm run build
