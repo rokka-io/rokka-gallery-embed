@@ -1,12 +1,12 @@
-name: Lint
+name: Codecheck
 
 on: [push]
 
 jobs:
-  lint:
-    name: Lint
+  install:
+    name: Install
     runs-on: ubuntu-latest
-    steps:
+      steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 16
         uses: actions/setup-node@v3
@@ -14,5 +14,13 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: npm ci
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
       - name: Run linter
         run: npm run lint
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+      - name: Run Build
+        run: npm run build
