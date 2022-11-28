@@ -8,8 +8,10 @@
 <script setup lang="ts">
 import '@/scss/base.scss';
 import Gallery from './components/Gallery.vue';
+import { onBeforeMount } from 'vue';
+import { useI18n } from 'vue-i18n';
 
-defineProps({
+const props = defineProps({
   org: {
     type: String,
     required: true,
@@ -18,5 +20,16 @@ defineProps({
     type: String,
     required: true,
   },
+  lang: {
+    type: String,
+    required: false,
+  },
+});
+
+const { availableLocales, locale } = useI18n();
+onBeforeMount(() => {
+  if (props.lang && availableLocales.includes(props.lang)) {
+    locale.value = props.lang;
+  }
 });
 </script>
