@@ -11,14 +11,22 @@ To use the Rokka Gallery Embed on your site, embed it with
 ```html
 
 <script
-        src="/rokka-gallery.js"
-        data-org="your-rokka-organization"
-        data-album="your-album"
+    src="/rokka-gallery.js"
+    data-lang="de"
+    data-organization="your-organization"
+    data-album="your-album"
 ></script>
 ```
 
 You can either build the project yourself
 and host the script on your site, or use a CDN.
+
+### Languages
+
+| Language |          Code         |
+|:--------:|:---------------------:|
+| English  | `en` (Default option) |
+| German   | `de`                  |
 
 ### API
 

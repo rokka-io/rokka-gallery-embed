@@ -1,0 +1,11 @@
+{
+    "teaser": {
+        "openOverview": "Show all pictures",
+        "poweredBy": "powered by"
+    },
+    "gallery": {
+        "openOverview": "Overview",
+        "download": "Download"
+    },
+    "error": "The album could not be loaded"
+}

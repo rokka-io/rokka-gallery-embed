@@ -54,7 +54,7 @@ const { images, teaser } = album;
 const error = !images.length;
 
 const openOverlay = ref<'overview' | 'carousel' | null>(null);
-const activeImage = ref<Image | null>();
+const activeImage = ref<Image | undefined>();
 const overviewFocusImageIndex = ref<number>(0);
 
 const teaserTabindex = computed(() =>
