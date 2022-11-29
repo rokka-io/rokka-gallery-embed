@@ -11,10 +11,10 @@ To use the Rokka Gallery Embed on your site, embed it with
 ```html
 
 <script
-        src="/rokka-gallery.js"
-        data-lang="de"
-        data-org="your-organization"
-        data-album="your-album"
+    src="/rokka-gallery.js"
+    data-lang="de"
+    data-organization="your-organization"
+    data-album="your-album"
 ></script>
 ```
 

@@ -3,7 +3,7 @@
     <h1>ROKKA GALLERY EMBED</h1>
   </header>
   <main>
-    <Export album="Zurich" org="gallery-demo" />
+    <Export album="Zurich" organization="gallery-demo" />
   </main>
 </template>
 <script lang="ts" setup>
