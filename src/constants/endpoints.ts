@@ -5,7 +5,7 @@ const DOWNLOAD_STACK = 'dynamic/o-content_disposition-attachment';
 export default {
   album: (name: string, organization: string) =>
     `${BASE_URL(organization)}/_albums/${name}/all.json`,
-  albumFavourites: (name: string, organization: string) =>
+  albumFavorites: (name: string, organization: string) =>
     `${BASE_URL(organization)}/_albums/${name}/favorites.json`,
   render: (hash: string, name: string, organization: string) =>
     `${BASE_URL(organization)}/${BASE_STACK}/${hash}/${name}`,

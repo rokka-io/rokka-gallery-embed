@@ -8,16 +8,16 @@ export const useAlbum = async (
   const allResponse = await fetch(
     ROKKA_ENDPOINTS.album(albumName, organization)
   );
-  const favouritesResponse = await fetch(
-    ROKKA_ENDPOINTS.albumFavourites(albumName, organization)
+  const favoritesResponse = await fetch(
+    ROKKA_ENDPOINTS.albumFavorites(albumName, organization)
   );
 
   const all = await allResponse.json();
-  const favourites = await favouritesResponse.json();
+  const favorites = await favoritesResponse.json();
 
   const allAsImage = useImages(all.items, organization);
-  const favouritesAsImage = useImages(favourites.items, organization);
-  const fixedLengthTeaserImages = useTeaser(favouritesAsImage, allAsImage);
+  const favoritesAsImage = useImages(favorites.items, organization);
+  const fixedLengthTeaserImages = useTeaser(favoritesAsImage, allAsImage);
 
   return {
     images: allAsImage,
@@ -35,19 +35,19 @@ const useImages = (images: RokkaImage[], organization: string): Image[] => {
 };
 
 const useTeaser = (
-  favouriteImages: Image[],
+  favoriteImages: Image[],
   allImages: Image[],
   size: number = 4
 ): Image[] => {
   // Make sure always four teaser images are available
-  // Either fills up teaser images with images that aren't favourited
-  // Or return the first 4 favourite images
-  const favouriteImageIds = favouriteImages.map((img) => img.id);
-  return favouriteImages.length < size
-    ? favouriteImages.concat(
+  // Either fills up teaser images with images that aren't favorited
+  // Or return the first 4 favorite images
+  const favoriteImageIds = favoriteImages.map((img) => img.id);
+  return favoriteImages.length < size
+    ? favoriteImages.concat(
         allImages
-          .filter((img) => !favouriteImageIds.includes(img.id))
-          .slice(0, size - favouriteImages.length)
+          .filter((img) => !favoriteImageIds.includes(img.id))
+          .slice(0, size - favoriteImages.length)
       )
-    : favouriteImages.slice(0, size);
+    : favoriteImages.slice(0, size);
 };
