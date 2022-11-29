@@ -1,7 +1,7 @@
 <template>
   <Suspense>
     <div class="rokka-gallery">
-      <Gallery :organization="org" :album-name="album" />
+      <Gallery :organization="organization" :album-name="album" />
     </div>
   </Suspense>
 </template>
