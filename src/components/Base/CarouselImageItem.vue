@@ -16,12 +16,14 @@
       class="rokka-gallery-carousel-item--caption rokka-gallery-base--space-between"
     >
       <p>{{ image.description }}</p>
-      <ExternalLink :to="image.download" :tabindex="downloadButtonTabIndex">
-        <p class="rokka-gallery-base--no-line-break">
-          <Download class="rokka-gallery-base--inline-icon" />
-          {{ $t('gallery.download') }}
-        </p>
-      </ExternalLink>
+      <a
+        :href="image.download"
+        :tabindex="downloadButtonTabIndex"
+        class="rokka-gallery-base--no-line-break"
+      >
+        <Download class="rokka-gallery-base--inline-icon" />
+        {{ $t('gallery.download') }}
+      </a>
     </div>
   </div>
 </template>
@@ -29,7 +31,6 @@
 import type { Image } from '@/classes/types';
 import type { PropType } from 'vue';
 import Download from '../Icons/Download.vue';
-import ExternalLink from './ExternalLink.vue';
 
 defineProps({
   image: {
@@ -48,16 +49,19 @@ defineProps({
       padding-left: 16px;
       padding-right: 16px;
     }
+
     &--image-container {
       overflow: hidden;
       border-radius: 4px;
       background-color: rgb(255 255 255 / 0.05);
     }
+
     &--image {
       object-fit: contain;
       width: 100%;
       height: 100%;
     }
+
     &--caption {
       margin-top: 8px;
       margin-left: 8px;

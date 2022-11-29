@@ -3,23 +3,20 @@
     class="rokka-gallery-flex--autosize-parent rokka-gallery-carousel--parent"
   >
     <div class="rokka-gallery-carousel--nav-arrow">
-      <Clickable @click="prev">
+      <Button @click="prev">
         <Left />
-      </Clickable>
+      </Button>
     </div>
     <div
       class="rokka-gallery-flex--autosize rokka-gallery-flex--autosize-vertical-parent"
     >
       <div class="rokka-gallery-carousel--back-to-overview">
-        <Clickable
-          @click="emit('openOverview', currentImageIndex)"
-          tabindex="0"
-        >
+        <Button @click="emit('openOverview', currentImageIndex)" tabindex="0">
           <p>
             <Back class="rokka-gallery-base--inline-icon" />
             {{ $t('gallery.openOverview') }}
           </p>
-        </Clickable>
+        </Button>
       </div>
       <CarouselWithFixedHeight
         ref="carousel"
@@ -36,16 +33,16 @@
       </CarouselWithFixedHeight>
     </div>
     <div class="rokka-gallery-carousel--nav-arrow">
-      <Clickable @click="next">
+      <Button @click="next">
         <Right />
-      </Clickable>
+      </Button>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import type { PropType } from 'vue';
-import Clickable from './Base/Clickable.vue';
+import Button from './Base/Button.vue';
 import Right from './Icons/Right.vue';
 import Left from './Icons/Left.vue';
 import type { Image } from '@/classes/types';
@@ -101,12 +98,14 @@ const downloadButtonTabIndex = (item: Image) =>
     &--parent {
       align-items: center;
     }
+
     &--nav-arrow {
       @include screen-md {
         margin-left: 16px;
         margin-right: 16px;
       }
     }
+
     &--back-to-overview {
       padding-left: 16px;
       padding-right: 16px;

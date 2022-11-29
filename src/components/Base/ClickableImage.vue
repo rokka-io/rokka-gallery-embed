@@ -1,5 +1,5 @@
 <template>
-  <Clickable @click="emit('click', image)" ref="clickableImage">
+  <Button @click="emit('click', image)" ref="clickableImage">
     <div class="rokka-gallery-clickable-image--fixed-aspect-ratio">
       <img
         class="rokka-gallery-clickable-image--cover-parent"
@@ -7,12 +7,12 @@
         :alt="image.description"
       />
     </div>
-  </Clickable>
+  </Button>
 </template>
 <script lang="ts" setup>
 import type { Image } from '@/classes/types';
 import type { PropType } from 'vue';
-import Clickable from './Clickable.vue';
+import Button from './Button.vue';
 import { ref, defineExpose } from 'vue';
 
 defineProps({
@@ -22,7 +22,7 @@ defineProps({
   },
 });
 
-const clickableImage = ref<InstanceType<typeof Clickable> | null>(null);
+const clickableImage = ref<InstanceType<typeof Button> | null>(null);
 defineExpose({ clickableImage });
 
 const emit = defineEmits(['click']);
@@ -33,6 +33,7 @@ const emit = defineEmits(['click']);
     &--fixed-aspect-ratio {
       aspect-ratio: 14 / 9;
     }
+
     &--cover-parent {
       object-fit: cover;
       width: 100%;

@@ -2,9 +2,9 @@
   <div class="rokka-gallery-overlay--overlay">
     <div class="rokka-gallery-flex--autosize-vertical-parent">
       <div class="rokka-gallery-overlay--close-button">
-        <Clickable @click="emit('close')">
+        <Button @click="emit('close')">
           <Close />
-        </Clickable>
+        </Button>
       </div>
       <div
         class="rokka-gallery-flex--autosize rokka-gallery-overlay--overflow-y-auto"
@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { defineEmits, onMounted, onUnmounted } from 'vue';
 import Close from '@/components/Icons/Close.vue';
-import Clickable from './Clickable.vue';
+import Button from './Button.vue';
 
 const emit = defineEmits(['close']);
 
@@ -59,11 +59,13 @@ const eventListener = (event: KeyboardEvent) => {
         padding-bottom: 80px;
       }
     }
+
     &--close-button {
       display: flex;
       justify-content: flex-end;
       padding-bottom: 32px;
     }
+
     &--overflow-y-auto {
       overflow-y: auto;
     }

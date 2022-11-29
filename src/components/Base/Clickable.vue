@@ -1,9 +1,0 @@
-<template>
-  <a
-    @click.capture="$emit('click')"
-    @keydown.enter.capture="$emit('click')"
-    class="rokka-gallery-base--pointer"
-  >
-    <slot></slot>
-  </a>
-</template>

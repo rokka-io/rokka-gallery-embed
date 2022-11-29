@@ -10,15 +10,18 @@
       />
     </div>
     <div class="rokka-gallery-base--space-between">
-      <Clickable @click="emit('openOverview')" :tabindex="teaserTabIndex">
+      <Button @click="emit('openOverview')" :tabindex="teaserTabIndex">
         <p>{{ $t('teaser.openOverview') }}</p>
-      </Clickable>
-      <ExternalLink to="https://rokka.io" :tabindex="teaserTabIndex">
-        <p class="rokka-gallery-base--no-line-break">
-          {{ $t('teaser.poweredBy')
-          }}<Rokka class="rokka-gallery-base--inline-icon" />
-        </p>
-      </ExternalLink>
+      </Button>
+      <a
+        href="https://rokka.io"
+        target="_blank"
+        class="rokka-gallery-base--no-line-break"
+        :tabindex="teaserTabIndex"
+      >
+        {{ $t('teaser.poweredBy') }}
+        <Rokka class="rokka-gallery-base--inline-icon" />
+      </a>
     </div>
   </div>
 </template>
@@ -27,8 +30,7 @@ import { defineProps, type PropType } from 'vue';
 import type { Image } from '@/classes/types';
 import ClickableImage from './Base/ClickableImage.vue';
 import Rokka from './Icons/Rokka.vue';
-import Clickable from './Base/Clickable.vue';
-import ExternalLink from './Base/ExternalLink.vue';
+import Button from './Base/Button.vue';
 
 defineProps({
   images: {
