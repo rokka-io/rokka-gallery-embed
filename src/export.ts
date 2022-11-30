@@ -1,11 +1,11 @@
 import { createApp } from 'vue';
-import langs from '@/lang/langs';
+import i18n from '@/lang/i18n';
 import Export from './Export.vue';
 
 export default {
   mount: (selector: string, props: any) => {
     const app = createApp(Export, props);
-    app.use(langs);
+    app.use(i18n);
     app.mount(selector);
   },
 };

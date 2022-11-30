@@ -4,15 +4,19 @@
       v-for="(image, index) of images"
       :key="index"
       :ref="(el: any) => imagesRef[index] = el"
-      :image="image"
+      :src="image.teaserSrc"
+      :srcset="image.teaserSrcset"
+      :alt="image.description"
+      sizes="25vw"
       tabindex="0"
-      @click="(image) => emit('openImage', image)"
+      @click="() => emit('openImage', image)"
     />
   </div>
 </template>
+
 <script setup lang="ts">
 import { defineProps, onMounted, type PropType } from 'vue';
-import type { Image } from '@/classes/types';
+import type { Image } from '@/config/types';
 import ClickableImage from './Base/ClickableImage.vue';
 
 const props = defineProps({
@@ -22,6 +26,9 @@ const props = defineProps({
   },
   focusImageIndex: {
     type: Number,
+    default() {
+      return 0;
+    },
   },
 });
 
@@ -35,22 +42,21 @@ onMounted(() => {
 
 const emit = defineEmits(['openImage']);
 </script>
+
 <style lang="scss">
-@import '@/scss/mediaqueries.scss';
+@import '@/scss/_mediaqueries.scss';
 
-.rokka-gallery {
-  &-overview {
-    &--image-grid {
-      display: grid;
-      gap: 16px;
+.rokka-gallery-overview {
+  &--image-grid {
+    display: grid;
+    gap: 1rem;
 
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      @include screen-md {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-      @include screen-lg {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    @include screen-md {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    @include screen-lg {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
   }
 }

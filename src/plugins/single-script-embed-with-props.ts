@@ -1,12 +1,13 @@
 import type { OutputChunk } from 'rollup';
+import type { Plugin } from 'vite';
 
-export default () => ({
+export default (): Plugin => ({
   name: 'single-script-embed-with-props',
   apply: 'build',
   enforce: 'post',
   generateBundle: async (opts, bundle) => {
-    const jsFile = bundle[opts.entryFileNames] as OutputChunk;
-    jsFile.code = IIFE_WRAPPER(jsFile.code, opts.name);
+    const jsFile = bundle[opts.entryFileNames as string] as OutputChunk;
+    jsFile.code = IIFE_WRAPPER(jsFile.code, opts.name || 'RokkaGallery');
   },
 });
 

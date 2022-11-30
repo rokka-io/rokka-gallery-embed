@@ -1,12 +1,12 @@
 <template>
   <div
     ref="sizer"
-    :style="{ '--rokka-gallery-carousel--slider-height': `${imageHeight}px` }"
+    :style="{ '--rokka-gallery-carousel--height': `${imageHeight}px` }"
   >
-    <div class="rokka-gallery-carousel-w-fixed-h--sizer">
+    <div class="rokka-gallery-carousel--sizer">
       <Flicking ref="slider" :options="options">
         <div
-          :style="{ height: 'var(--rokka-gallery-carousel--slider-height)' }"
+          :style="{ height: 'var(--rokka-gallery-carousel--height)' }"
           v-for="(item, index) of items"
           :key="index"
         >
@@ -16,6 +16,7 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 import Flicking, { MOVE_TYPE } from '@egjs/vue3-flicking';
 import type { VueFlicking } from '@egjs/vue3-flicking/declaration/types';
@@ -61,13 +62,12 @@ const setSize = () => (imageHeight.value = sizer.value?.clientHeight ?? 0);
 onMounted(() => setSize() && addEventListener('resize', setSize));
 onUnmounted(() => removeEventListener('resize', setSize));
 </script>
+
 <style lang="scss">
-.rokka-gallery {
-  &-carousel-w-fixed-h {
-    &--sizer {
-      position: absolute;
-      width: 100%;
-    }
+.rokka-gallery-carousel {
+  &--sizer {
+    position: absolute;
+    width: 100%;
   }
 }
 </style>

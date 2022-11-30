@@ -1,34 +1,42 @@
 <template>
-  <div>
-    <div class="rokka-gallery-teaser--preview-images">
+  <div class="rokka-gallery-teaser--container">
+    <div class="rokka-gallery-teaser--images">
       <ClickableImage
         v-for="(image, index) of images"
         :key="index"
-        :image="image"
+        :src="image.teaserSrc"
+        :srcset="image.teaserSrcset"
+        :alt="image.description"
+        sizes="25vw"
         :tabindex="teaserTabIndex"
-        @click="(image) => emit('openImage', image)"
+        :title="$t('teaser.showImage')"
+        @click="() => emit('openImage', image)"
       />
     </div>
-    <div class="rokka-gallery-base--space-between">
-      <Clickable @click="emit('openOverview')" :tabindex="teaserTabIndex">
-        <p>{{ $t('teaser.openOverview') }}</p>
-      </Clickable>
-      <ExternalLink to="https://rokka.io" :tabindex="teaserTabIndex">
-        <p class="rokka-gallery-base--no-line-break">
-          {{ $t('teaser.poweredBy')
-          }}<Rokka class="rokka-gallery-base--inline-icon" />
-        </p>
-      </ExternalLink>
+    <div class="rokka-gallery-teaser--footer">
+      <Button @click="emit('openOverview')" :tabindex="teaserTabIndex">
+        {{ $t('teaser.openOverview') }}
+      </Button>
+      <a
+        href="https://rokka.io"
+        target="_blank"
+        class="rokka-gallery-teaser--attribution"
+        :tabindex="teaserTabIndex"
+        :title="$t('teaser.attribution')"
+      >
+        <span>{{ $t('teaser.poweredBy') }}</span>
+        <Rokka aria-hidden="true" />
+      </a>
     </div>
   </div>
 </template>
+
 <script lang="ts" setup>
 import { defineProps, type PropType } from 'vue';
-import type { Image } from '@/classes/types';
+import type { Image } from '@/config/types';
 import ClickableImage from './Base/ClickableImage.vue';
 import Rokka from './Icons/Rokka.vue';
-import Clickable from './Base/Clickable.vue';
-import ExternalLink from './Base/ExternalLink.vue';
+import Button from './Base/Button.vue';
 
 defineProps({
   images: {
@@ -43,15 +51,29 @@ defineProps({
 
 const emit = defineEmits(['openImage', 'openOverview']);
 </script>
-<style lang="scss">
-.rokka-gallery {
-  &-teaser {
-    &--preview-images {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
 
-      margin-bottom: 16px;
+<style lang="scss">
+.rokka-gallery-teaser {
+  &--images {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &--footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &--attribution {
+    display: flex;
+    align-items: center;
+
+    > svg {
+      flex-shrink: 0;
+      margin-left: 0.5rem;
     }
   }
 }

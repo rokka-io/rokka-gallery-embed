@@ -6,33 +6,40 @@
 
 ## Usage
 
-To use the Rokka Gallery Embed on your site, embed it with
+You can embed any rokka gallery in your site with the following snippet:
 
 ```html
-
 <script
-        src="/rokka-gallery.js"
-        data-org="your-rokka-organization"
-        data-album="your-album"
+    src="/rokka-gallery.js"
+    data-lang="de"
+    data-organization="your-rokka-organization"
+    data-album="your-album"
 ></script>
 ```
 
 You can either build the project yourself
 and host the script on your site, or use a CDN.
 
-### API
+### Languages
+
+| Language |          Code         |
+|:--------:|:---------------------:|
+| English  | `en` (Default option) |
+| German   | `de`                  |
+
+### Events
 
 We provide the following events on the document
 
-- `rokkagallery.open` is triggered when the Overlay is opened
-- `rokkagallery.close` is triggered when the Overlay is closed
+- `rokkagallery.open` is triggered when the overlay is opened
+- `rokkagallery.close` is triggered when the overlay is closed
 
 ```js
 document.addEventListener('rokkagallery.open', rokkaOverlayOpened)
 document.addEventListener('rokkagallery.close', rokkaOverlayClosed)
 ```
 
-You may wish to restrict scrolling or tabbing on your page while the user has opened Rokka Gallery.
+You can use them for example to restrict scrolling or tabbing on your page while the user has opened Rokka Gallery.
 
 ## Development
 

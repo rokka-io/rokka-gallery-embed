@@ -1,0 +1,19 @@
+{
+    "teaser": {
+        "showImage": "Show image",
+        "openOverview": "Show all pictures",
+        "poweredBy": "powered by",
+        "attribution": "powered by rokka"
+    },
+    "gallery": {
+        "openOverview": "Overview",
+        "backToOverview": "Back to overview",
+        "download": "Download",
+        "downloadImage": "Download image",
+        "prev": "Previous image",
+        "next": "Next image"
+    },
+    "overlay": {
+        "close": "Close"
+    }
+}
