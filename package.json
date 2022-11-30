@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@egjs/vue3-flicking": "^4.10.0",
+    "lodash-es": "^4.17.21",
     "sass": "^1.56.1",
     "vite-plugin-css-injected-by-js": "^2.1.1",
     "vue": "^3.2.38",
@@ -20,9 +21,9 @@
     "@intlify/vite-plugin-vue-i18n": "^6.0.3",
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/jsdom": "^20.0.0",
+    "@types/lodash-es": "^4.17.6",
     "@types/node": "^16.11.56",
     "@vitejs/plugin-vue": "^3.0.3",
-    "@vitejs/plugin-vue-jsx": "^2.0.1",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^11.0.0",
     "@vue/test-utils": "^2.0.2",

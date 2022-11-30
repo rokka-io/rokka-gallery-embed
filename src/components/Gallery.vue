@@ -1,7 +1,7 @@
 <template>
-  <div v-if="!error">
+  <div v-if="images.length > 0 && teaserImages.length > 0">
     <Teaser
-      :images="teaser"
+      :images="teaserImages"
       :teaser-tab-index="teaserTabindex"
       @open-image="openImage"
       @open-overview="openOverview"
@@ -13,7 +13,6 @@
         :focus-image-index="overviewFocusImageIndex"
         @open-image="openImage"
       />
-
       <Carousel
         v-if="openOverlay === 'carousel'"
         :images="images"
@@ -22,17 +21,16 @@
       />
     </Overlay>
   </div>
-  <Error v-else />
 </template>
+
 <script setup lang="ts">
-import type { Image } from '@/classes/types';
+import type { Image } from '@/config/types';
 import { ref, computed } from 'vue';
 import Teaser from './Teaser.vue';
 import Overlay from './Base/Overlay.vue';
 import Overview from './Overview.vue';
 import Carousel from './Carousel.vue';
-import { useAlbum } from '@/composables/useRokka';
-import Error from './Error.vue';
+import { getAlbum } from '@/services/rokka';
 
 const props = defineProps({
   albumName: {
@@ -45,13 +43,24 @@ const props = defineProps({
   },
 });
 
-const album = await useAlbum(props.albumName, props.organization).catch(() => ({
-  images: [],
-  teaser: [],
-}));
-const { images, teaser } = album;
+if (!props.albumName) {
+  console.warn(
+    '[RokkaGallery] Please provide an album name via the [data-album="YourRokkaAlbum"] attribute'
+  );
+}
 
-const error = !images.length;
+if (!props.organization) {
+  console.warn(
+    '[RokkaGallery] Please provide an organization via the [data-organization="YourRokkaOrganization"] attribute'
+  );
+}
+
+const album =
+  props.albumName && props.organization
+    ? await getAlbum(props.albumName, props.organization)
+    : undefined;
+
+const { images, teaserImages } = album || { images: [], teaserImages: [] };
 
 const openOverlay = ref<'overview' | 'carousel' | null>(null);
 const activeImage = ref<Image | undefined>();

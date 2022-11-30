@@ -1,28 +1,28 @@
 <template>
-  <div
-    class="rokka-gallery-flex--autosize-parent rokka-gallery-carousel--parent"
-  >
-    <div class="rokka-gallery-carousel--nav-arrow">
-      <Button @click="prev">
-        <Left />
-      </Button>
-    </div>
-    <div
-      class="rokka-gallery-flex--autosize rokka-gallery-flex--autosize-vertical-parent"
+  <div class="rokka-gallery-carousel--container">
+    <Button
+      @click="prev"
+      class="rokka-gallery-carousel--nav-arrow"
+      :title="$t('gallery.prev')"
     >
-      <div class="rokka-gallery-carousel--back-to-overview">
-        <Button @click="emit('openOverview', currentImageIndex)" tabindex="0">
-          <p>
-            <Back class="rokka-gallery-base--inline-icon" />
-            {{ $t('gallery.openOverview') }}
-          </p>
+      <Left aria-hidden="true" />
+    </Button>
+    <div class="rokka-gallery-carousel--inner-container">
+      <div class="rokka-gallery-carousel--header">
+        <Button
+          @click="emit('openOverview', currentImageIndex)"
+          class="rokka-gallery-carousel--back-to-overview"
+          :title="$t('gallery.backToOverview')"
+        >
+          <Back aria-hidden="true" />
+          <span>{{ $t('gallery.openOverview') }}</span>
         </Button>
       </div>
       <CarouselWithFixedHeight
         ref="carousel"
         :items="images"
         :initial-item="initialSlide"
-        class="rokka-gallery-flex--autosize"
+        class="rokka-gallery-carousel--carousel"
       >
         <template #slide="{ item }: { item: Image }">
           <CarouselImageItem
@@ -32,20 +32,23 @@
         </template>
       </CarouselWithFixedHeight>
     </div>
-    <div class="rokka-gallery-carousel--nav-arrow">
-      <Button @click="next">
-        <Right />
-      </Button>
-    </div>
+    <Button
+      @click="next"
+      class="rokka-gallery-carousel--nav-arrow"
+      :title="$t('gallery.next')"
+    >
+      <Right aria-hidden="true" />
+    </Button>
   </div>
 </template>
+
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import type { PropType } from 'vue';
 import Button from './Base/Button.vue';
 import Right from './Icons/Right.vue';
 import Left from './Icons/Left.vue';
-import type { Image } from '@/classes/types';
+import type { Image } from '@/config/types';
 import Back from './Icons/Back.vue';
 import CarouselImageItem from './Base/CarouselImageItem.vue';
 import CarouselWithFixedHeight from './Base/CarouselWithFixedHeight.vue';
@@ -90,27 +93,45 @@ const next = () => carousel.value?.next();
 const downloadButtonTabIndex = (item: Image) =>
   carousel.value?.currentSlide() === props.images.indexOf(item) ? '0' : '-1';
 </script>
+
 <style lang="scss">
-@import '@/scss/mediaqueries.scss';
+@import '@/scss/_mediaqueries.scss';
 
-.rokka-gallery {
-  &-carousel {
-    &--parent {
-      align-items: center;
-    }
+.rokka-gallery-carousel {
+  &--container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
 
-    &--nav-arrow {
-      @include screen-md {
-        margin-left: 16px;
-        margin-right: 16px;
-      }
-    }
+  &--inner-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
-    &--back-to-overview {
-      padding-left: 16px;
-      padding-right: 16px;
-      margin-bottom: 16px;
+  &--nav-arrow {
+    padding: 1rem;
+    flex-shrink: 0;
+
+    @include screen-md {
+      padding: 1.5rem;
     }
+  }
+
+  &--back-to-overview {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+
+    > svg {
+      flex-shrink: 0;
+      margin-right: 0.5rem;
+    }
+  }
+
+  &--carousel {
+    flex-grow: 1;
   }
 }
 </style>

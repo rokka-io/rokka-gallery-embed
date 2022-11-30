@@ -1,6 +1,6 @@
 <template>
   <svg
-    width="20"
+    width="32"
     height="32"
     viewBox="0 0 20 32"
     fill="currentColor"

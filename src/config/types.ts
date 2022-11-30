@@ -1,13 +1,16 @@
 export interface Image {
   id: string;
-  url: string;
+  src: string;
+  srcset: string;
+  teaserSrc: string;
+  teaserSrcset: string;
   description: string;
   download: string;
 }
 
 export interface Album {
   images: Image[];
-  teaser: Image[];
+  teaserImages: Image[];
 }
 
 export interface RokkaImage {

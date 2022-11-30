@@ -1,9 +1,5 @@
 <template>
-  <button
-    @click.capture="$emit('click')"
-    @keydown.enter.capture="$emit('click')"
-    class="rokka-gallery-button"
-  >
+  <button class="rokka-gallery-button">
     <slot></slot>
   </button>
 </template>

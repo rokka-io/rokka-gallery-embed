@@ -1,11 +1,19 @@
 {
     "teaser": {
+        "showImage": "Show image",
         "openOverview": "Show all pictures",
-        "poweredBy": "powered by"
+        "poweredBy": "powered by",
+        "attribution": "powered by rokka"
     },
     "gallery": {
         "openOverview": "Overview",
-        "download": "Download"
+        "backToOverview": "Back to overview",
+        "download": "Download",
+        "downloadImage": "Download image",
+        "prev": "Previous image",
+        "next": "Next image"
     },
-    "error": "The album could not be loaded"
+    "overlay": {
+        "close": "Close"
+    }
 }
