@@ -1,6 +1,7 @@
 import type { OutputChunk } from 'rollup';
+import type { Plugin } from 'vite';
 
-export default () => ({
+export default (): Plugin => ({
   name: 'single-script-embed-with-props',
   apply: 'build',
   enforce: 'post',

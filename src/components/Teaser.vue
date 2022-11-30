@@ -1,10 +1,13 @@
 <template>
-  <div>
+  <div class="rokka-gallery-teaser--container">
     <div class="rokka-gallery-teaser--images">
       <ClickableImage
         v-for="(image, index) of images"
         :key="index"
-        :image="image"
+        :src="image.teaserSrc"
+        :srcset="image.teaserSrcset"
+        :alt="image.description"
+        sizes="25vw"
         :tabindex="teaserTabIndex"
         :title="$t('teaser.showImage')"
         @click="() => emit('openImage', image)"
@@ -12,23 +15,25 @@
     </div>
     <div class="rokka-gallery-teaser--footer">
       <Button @click="emit('openOverview')" :tabindex="teaserTabIndex">
-        <p>{{ $t('teaser.openOverview') }}</p>
+        {{ $t('teaser.openOverview') }}
       </Button>
       <a
         href="https://rokka.io"
         target="_blank"
-        class="rokka-gallery-base--no-line-break"
+        class="rokka-gallery-teaser--attribution"
         :tabindex="teaserTabIndex"
+        :title="$t('teaser.attribution')"
       >
-        {{ $t('teaser.poweredBy') }}
-        <Rokka class="rokka-gallery-base--inline-icon" />
+        <span>{{ $t('teaser.poweredBy') }}</span>
+        <Rokka aria-hidden="true" />
       </a>
     </div>
   </div>
 </template>
+
 <script lang="ts" setup>
 import { defineProps, type PropType } from 'vue';
-import type { Image } from '@/classes/types';
+import type { Image } from '@/config/types';
 import ClickableImage from './Base/ClickableImage.vue';
 import Rokka from './Icons/Rokka.vue';
 import Button from './Base/Button.vue';
@@ -46,6 +51,7 @@ defineProps({
 
 const emit = defineEmits(['openImage', 'openOverview']);
 </script>
+
 <style lang="scss">
 .rokka-gallery-teaser {
   &--images {
@@ -59,6 +65,16 @@ const emit = defineEmits(['openImage', 'openOverview']);
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &--attribution {
+    display: flex;
+    align-items: center;
+
+    > svg {
+      flex-shrink: 0;
+      margin-left: 0.5rem;
+    }
   }
 }
 </style>

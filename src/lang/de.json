@@ -2,11 +2,16 @@
     "teaser": {
         "showImage": "Bild anzeigen",
         "openOverview": "Alle Fotos Anzeigen",
-        "poweredBy": "powered by"
+        "poweredBy": "powered by",
+        "attribution": "powered by rokka"
     },
     "gallery": {
         "openOverview": "Übersicht",
-        "download": "Download"
+        "backToOverview": "Zurück zur Übersicht",
+        "download": "Download",
+        "downloadImage": "Bild herunterladen",
+        "prev": "Letztes Bild",
+        "next": "Nächstes Bild"
     },
     "overlay": {
         "close": "Schliessen"

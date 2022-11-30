@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Image } from '@/classes/types';
+import type { Image } from '@/config/types';
 import { ref, computed } from 'vue';
 import Teaser from './Teaser.vue';
 import Overlay from './Base/Overlay.vue';

@@ -10,6 +10,7 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 import { defineEmits, onMounted, onUnmounted } from 'vue';
 import Close from '@/components/Icons/Close.vue';
@@ -31,8 +32,9 @@ const closeOnEscape = (event: KeyboardEvent) => {
   }
 };
 </script>
+
 <style lang="scss">
-@import '@/scss/mediaqueries.scss';
+@import '@/scss/_mediaqueries.scss';
 
 :root {
   --rokka-gallery-overlay--z-index: 1000;

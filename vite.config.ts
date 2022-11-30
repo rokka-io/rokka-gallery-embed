@@ -6,7 +6,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import { resolve, dirname } from 'node:path';
 import vueI18n from '@intlify/vite-plugin-vue-i18n';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
-import singleScriptEmbedWithProps from './src/plugins/singleScriptEmbedWithProps';
+import singleScriptEmbedWithProps from './src/plugins/single-script-embed-with-props';
 
 const OUTPUT_OBJECT_NAME = 'RokkaGallery';
 const OUTPUT_FILENAME = 'rokka-gallery.js';
