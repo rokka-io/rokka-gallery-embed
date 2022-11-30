@@ -1,15 +1,16 @@
 <template>
   <div>
-    <div class="rokka-gallery-teaser--preview-images">
+    <div class="rokka-gallery-teaser--images">
       <ClickableImage
         v-for="(image, index) of images"
         :key="index"
         :image="image"
         :tabindex="teaserTabIndex"
-        @click="(image) => emit('openImage', image)"
+        :title="$t('teaser.showImage')"
+        @click="() => emit('openImage', image)"
       />
     </div>
-    <div class="rokka-gallery-base--space-between">
+    <div class="rokka-gallery-teaser--footer">
       <Button @click="emit('openOverview')" :tabindex="teaserTabIndex">
         <p>{{ $t('teaser.openOverview') }}</p>
       </Button>
@@ -46,15 +47,18 @@ defineProps({
 const emit = defineEmits(['openImage', 'openOverview']);
 </script>
 <style lang="scss">
-.rokka-gallery {
-  &-teaser {
-    &--preview-images {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
+.rokka-gallery-teaser {
+  &--images {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
 
-      margin-bottom: 16px;
-    }
+  &--footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 </style>

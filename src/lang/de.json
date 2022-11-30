@@ -1,5 +1,6 @@
 {
     "teaser": {
+        "showImage": "Bild anzeigen",
         "openOverview": "Alle Fotos Anzeigen",
         "poweredBy": "powered by"
     },
@@ -9,6 +10,5 @@
     },
     "overlay": {
         "close": "Schliessen"
-    },
-    "error": "Das Album konnte nicht geladen werden"
+    }
 }
