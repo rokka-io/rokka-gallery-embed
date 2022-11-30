@@ -22,9 +22,7 @@ jobs:
   deploy-to-develop:
     name: Deploy to develop
 
-    on:
-      push:
-        branches: [ develop ]
+    if: ${{ github.ref == 'refs/heads/develop' }}
 
     needs: [ lint ]
 
@@ -60,9 +58,7 @@ jobs:
   deploy-to-production:
     name: Deploy to production
 
-    on:
-      push:
-        branches: [ main ]
+    if: ${{ github.ref == 'refs/heads/main' }}
 
     needs: [ lint ]
 
