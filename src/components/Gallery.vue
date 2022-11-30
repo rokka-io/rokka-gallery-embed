@@ -43,9 +43,24 @@ const props = defineProps({
   },
 });
 
-const album = await getAlbum(props.albumName, props.organization);
+if (!props.albumName) {
+  console.warn(
+    '[RokkaGallery] Please provide an album name via the [data-album="YourRokkaAlbum"] attribute'
+  );
+}
 
-const { images = [], teaserImages = [] } = album || {};
+if (!props.organization) {
+  console.warn(
+    '[RokkaGallery] Please provide an organization via the [data-organization="YourRokkaOrganization"] attribute'
+  );
+}
+
+const album =
+  props.albumName && props.organization
+    ? await getAlbum(props.albumName, props.organization)
+    : undefined;
+
+const { images, teaserImages } = album || { images: [], teaserImages: [] };
 
 const openOverlay = ref<'overview' | 'carousel' | null>(null);
 const activeImage = ref<Image | undefined>();
