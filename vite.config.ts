@@ -8,7 +8,7 @@ import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
 import singleScriptEmbedWithProps from './src/plugins/single-script-embed-with-props';
 
 const OUTPUT_OBJECT_NAME = 'RokkaGallery';
-const OUTPUT_FILENAME = 'rokka-gallery';
+const OUTPUT_FILENAME = 'rokka-gallery.js';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -37,7 +37,7 @@ export default defineConfig({
       ),
       name: OUTPUT_OBJECT_NAME,
       formats: ['iife'],
-      fileName: OUTPUT_FILENAME,
+      fileName: () => OUTPUT_FILENAME,
     },
   },
   define: {

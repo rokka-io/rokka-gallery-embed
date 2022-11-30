@@ -6,8 +6,8 @@ export default (): Plugin => ({
   apply: 'build',
   enforce: 'post',
   generateBundle: async (opts, bundle) => {
-    const jsFile = bundle[opts.entryFileNames] as OutputChunk;
-    jsFile.code = IIFE_WRAPPER(jsFile.code, opts.name);
+    const jsFile = bundle[opts.entryFileNames as string] as OutputChunk;
+    jsFile.code = IIFE_WRAPPER(jsFile.code, opts.name || 'RokkaGallery');
   },
 });
 
