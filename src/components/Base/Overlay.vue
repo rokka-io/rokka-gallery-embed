@@ -1,16 +1,12 @@
 <template>
-  <div class="rokka-gallery-overlay--overlay">
-    <div class="rokka-gallery-flex--autosize-vertical-parent">
-      <div class="rokka-gallery-overlay--close-button">
-        <Button @click="emit('close')">
-          <Close />
-        </Button>
-      </div>
-      <div
-        class="rokka-gallery-flex--autosize rokka-gallery-overlay--overflow-y-auto"
-      >
-        <slot></slot>
-      </div>
+  <div class="rokka-gallery-overlay--container">
+    <div class="rokka-gallery-overlay--close-button">
+      <Button @click="emit('close')" :title="$t('overlay.close')">
+        <Close aria-hidden="true" />
+      </Button>
+    </div>
+    <div class="rokka-gallery-overlay--inner-container">
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -22,14 +18,14 @@ import Button from './Button.vue';
 const emit = defineEmits(['close']);
 
 onMounted(() => {
-  document.addEventListener('keydown', eventListener);
+  document.addEventListener('keydown', closeOnEscape);
 });
 
 onUnmounted(() => {
-  document.removeEventListener('keydown', eventListener);
+  document.removeEventListener('keydown', closeOnEscape);
 });
 
-const eventListener = (event: KeyboardEvent) => {
+const closeOnEscape = (event: KeyboardEvent) => {
   if (event.key === 'Escape') {
     emit('close');
   }
@@ -38,37 +34,45 @@ const eventListener = (event: KeyboardEvent) => {
 <style lang="scss">
 @import '@/scss/mediaqueries.scss';
 
-.rokka-gallery {
-  &-overlay {
-    &--overlay {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+:root {
+  --rokka-gallery-overlay--z-index: 1000;
+  --rokka-gallery-overlay--bg-color: rgb(0 0 0 / 0.95);
+  --rokka-gallery-overlay--text-color: #ffffff;
+}
 
-      z-index: 999999999;
-      background-color: rgb(0 0 0 / 0.95);
-      // Make all text inside overlay white
-      color: rgb(255, 255, 255);
+.rokka-gallery-overlay {
+  &--container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
-      padding: 16px;
-      padding-bottom: 48px;
-      @include screen-md {
-        padding: 48px;
-        padding-bottom: 80px;
-      }
+    display: flex;
+    flex-direction: column;
+
+    z-index: var(--rokka-gallery-overlay--z-index);
+    background-color: var(--rokka-gallery-overlay--bg-color);
+    color: var(--rokka-gallery-overlay--text-color);
+
+    padding: 1rem 0 3rem;
+    @include screen-md {
+      padding: 1rem 3rem 5rem;
     }
+  }
 
-    &--close-button {
-      display: flex;
-      justify-content: flex-end;
-      padding-bottom: 32px;
-    }
+  &--close-button {
+    text-align: right;
+    padding: 1rem;
 
-    &--overflow-y-auto {
-      overflow-y: auto;
+    @include screen-md {
+      padding: 1.5rem;
     }
+  }
+
+  &--inner-container {
+    flex-grow: 1;
+    overflow-y: auto;
   }
 }
 </style>
