@@ -43,17 +43,13 @@ jobs:
       - name: Build
         run: npm run build
       - name: Deploy
-        uses: reggionick/s3-deploy@v3
+        uses: shallwefootball/s3-upload-action@master
         with:
-          folder: dist
-          bucket: ${{ secrets.S3_BUCKET }}
-          bucket-region: ${{ secrets.S3_BUCKET_REGION }}
-          dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-          invalidation: /
-          delete-removed: true
-          no-cache: true
-          private: false
-          filesToInclude: ".*/*,*/*,**"
+          aws_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          aws_bucket: ${{ secrets.S3_BUCKET }}
+          source_dir: 'dist'
+          destination_dir: 'v1'
 
   deploy-to-production:
     name: Deploy to production
