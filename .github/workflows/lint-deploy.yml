@@ -40,13 +40,13 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: npm ci
-      - name: Build for production
+      - name: Build
         run: npm run build
       - name: Deploy
         uses: reggionick/s3-deploy@v3
         with:
           folder: dist
-          bucket: ${{ secrets.S3_BUCKET }}/dev
+          bucket: ${{ secrets.S3_BUCKET }}
           bucket-region: ${{ secrets.S3_BUCKET_REGION }}
           dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
           invalidation: /
@@ -76,13 +76,13 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: npm ci
-      - name: Build for production
+      - name: Build
         run: npm run build
       - name: Deploy
         uses: reggionick/s3-deploy@v3
         with:
           folder: dist
-          bucket: ${{ secrets.S3_BUCKET }}/v1
+          bucket: ${{ secrets.S3_BUCKET }}
           bucket-region: ${{ secrets.S3_BUCKET_REGION }}
           dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
           invalidation: /
