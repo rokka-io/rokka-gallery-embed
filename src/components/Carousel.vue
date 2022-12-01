@@ -10,7 +10,7 @@
     <div class="rokka-gallery-carousel--inner-container">
       <div class="rokka-gallery-carousel--header">
         <Button
-          @click="emit('openOverview', currentImageIndex)"
+          @click="openOverview"
           class="rokka-gallery-carousel--back-to-overview"
           :title="$t('gallery.backToOverview')"
         >
@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import type { PropType } from 'vue';
 import Button from './Base/Button.vue';
 import Right from './Icons/Right.vue';
@@ -78,18 +78,29 @@ onUnmounted(() => {
 });
 
 const eventListener = (event: KeyboardEvent) => {
+  if (event.key === 'ArrowUp') {
+    openOverview();
+  }
   if (event.key === 'ArrowRight') {
     next();
   }
   if (event.key === 'ArrowLeft') {
     prev();
   }
+  if (event.key === 'ArrowDown') {
+    downloadImage();
+  }
 };
 
 const carousel = ref<InstanceType<typeof CarouselWithFixedHeight> | null>();
-const currentImageIndex = computed(() => carousel.value?.currentSlide());
 const prev = () => carousel.value?.prev();
 const next = () => carousel.value?.next();
+const openOverview = () => {
+  emit('openOverview', carousel.value?.currentSlide());
+};
+const downloadImage = () => {
+  window.location.href = props.images[carousel.value?.currentSlide()].download;
+};
 const downloadButtonTabIndex = (item: Image) =>
   carousel.value?.currentSlide() === props.images.indexOf(item) ? '0' : '-1';
 </script>
