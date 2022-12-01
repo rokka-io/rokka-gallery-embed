@@ -38,7 +38,7 @@ const closeOnEscape = (event: KeyboardEvent) => {
 
 :root {
   --rokka-gallery-overlay--z-index: 1000;
-  --rokka-gallery-overlay--bg-color: rgb(0 0 0 / 0.95);
+  --rokka-gallery-overlay--bg-color: rgb(0, 0, 0, 0.95);
   --rokka-gallery-overlay--text-color: #ffffff;
 }
 
