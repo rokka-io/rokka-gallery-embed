@@ -10,10 +10,11 @@ You can embed any rokka gallery in your site with the following snippet:
 
 ```html
 <script
-    src="/rokka-gallery.js"
-    data-lang="de"
-    data-organization="your-rokka-organization"
-    data-album="your-album"
+  async
+  src="https://embed.rokka.io/v1/rokka-gallery.js"
+  data-lang="de"
+  data-organization="your-rokka-organization"
+  data-album="your-album"
 ></script>
 ```
 
