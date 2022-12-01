@@ -70,6 +70,7 @@ const emit = defineEmits(['openImage', 'openOverview']);
   &--attribution {
     display: flex;
     align-items: center;
+    font-size: 0.75rem;
 
     > svg {
       flex-shrink: 0;

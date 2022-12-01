@@ -50,6 +50,7 @@ const emit = defineEmits(['openImage']);
   &--image-grid {
     display: grid;
     gap: 1rem;
+    padding: 0 1.5rem;
 
     grid-template-columns: repeat(2, minmax(0, 1fr));
     @include screen-md {
