@@ -7,6 +7,7 @@
         :srcset="srcset"
         :sizes="sizes"
         :alt="alt"
+        loading="lazy"
       />
     </div>
   </Button>

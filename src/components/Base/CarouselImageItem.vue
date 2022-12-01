@@ -8,6 +8,7 @@
         :srcset="image.srcset"
         sizes="100vw"
         :alt="image.description"
+        loading="lazy"
       />
     </div>
     <div class="rokka-gallery-carousel-image-item--footer">
