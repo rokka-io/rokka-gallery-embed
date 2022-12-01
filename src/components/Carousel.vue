@@ -119,11 +119,13 @@ const downloadButtonTabIndex = (item: Image) =>
     }
   }
 
-  &--back-to-overview {
+  &--header {
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
+  }
 
+  &--back-to-overview {
     > svg {
       flex-shrink: 0;
       margin-right: 0.5rem;

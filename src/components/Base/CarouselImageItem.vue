@@ -63,13 +63,12 @@ defineProps({
 
   &--footer {
     margin: 1rem 0;
-  }
-
-  &--download-link {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+  }
 
+  &--download-link {
     > svg {
       flex-shrink: 0;
       margin-right: 0.5rem;
