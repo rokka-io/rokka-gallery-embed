@@ -1,6 +1,7 @@
 <template>
   <div class="rokka-gallery-carousel--container">
     <Button
+      v-if="images.length > 1"
       @click="prev"
       class="rokka-gallery-carousel--nav-arrow"
       :title="$t('gallery.prev')"
@@ -33,6 +34,7 @@
       </CarouselWithFixedHeight>
     </div>
     <Button
+      v-if="images.length > 1"
       @click="next"
       class="rokka-gallery-carousel--nav-arrow"
       :title="$t('gallery.next')"
@@ -93,8 +95,16 @@ const eventListener = (event: KeyboardEvent) => {
 };
 
 const carousel = ref<InstanceType<typeof CarouselWithFixedHeight> | null>();
-const prev = () => carousel.value?.prev();
-const next = () => carousel.value?.next();
+const prev = () => {
+  if (props.images.length > 1) {
+    carousel.value?.prev();
+  }
+};
+const next = () => {
+  if (props.images.length > 1) {
+    carousel.value?.next();
+  }
+};
 const openOverview = () => {
   emit('openOverview', carousel.value?.currentSlide());
 };
