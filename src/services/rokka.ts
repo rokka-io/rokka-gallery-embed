@@ -121,7 +121,7 @@ export const getCroppedImageSrc = (
   filename?: string
 ): string => {
   const height = Math.ceil(width * ratio);
-  const sizeParams = `resize-width-${width}-height-${height}--crop-width-${width}-height-${height}-mode-ratio`;
+  const sizeParams = `resize-width-${width}-height-${height}-upscale-false--crop-width-${width}-height-${height}-mode-ratio`;
 
   return `${BASE_URL(organization)}/dynamic/${
     BASE_SETTINGS ? `${BASE_SETTINGS}--` : ''
@@ -155,7 +155,7 @@ export const getResizedImageSrc = (
   width: number,
   filename?: string
 ): string => {
-  const sizeParams = `resize-width-${width}`;
+  const sizeParams = `resize-width-${width}-upscale-false`;
 
   return `${BASE_URL(organization)}/dynamic/${
     BASE_SETTINGS ? `${BASE_SETTINGS}--` : ''
