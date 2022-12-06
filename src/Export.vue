@@ -23,16 +23,5 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  lang: {
-    type: String,
-    required: false,
-  },
-});
-
-const { availableLocales, locale } = useI18n();
-onBeforeMount(() => {
-  if (props.lang && availableLocales.includes(props.lang)) {
-    locale.value = props.lang;
-  }
 });
 </script>
