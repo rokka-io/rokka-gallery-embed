@@ -8,6 +8,7 @@
         :srcset="image.srcset"
         sizes="100vw"
         :alt="image.description"
+        loading="lazy"
       />
     </div>
     <div class="rokka-gallery-carousel-image-item--footer">
@@ -41,6 +42,10 @@ defineProps({
 </script>
 
 <style lang="scss">
+:root {
+  --rokka-gallery-carousel-image-item--bg-color: rgb(255, 255, 255, 0.05);
+}
+
 .rokka-gallery-carousel-image-item {
   &--container {
     display: flex;
@@ -51,7 +56,7 @@ defineProps({
 
   &--image-container {
     overflow: hidden;
-    background-color: rgb(255 255 255 / 0.05);
+    background-color: var(--rokka-gallery-carousel-image-item--bg-color);
     height: 100%;
   }
 
@@ -62,14 +67,13 @@ defineProps({
   }
 
   &--footer {
-    margin-top: 1rem;
-  }
-
-  &--download-link {
+    margin: 1rem 0;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+  }
 
+  &--download-link {
     > svg {
       flex-shrink: 0;
       margin-right: 0.5rem;

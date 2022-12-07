@@ -1,7 +1,7 @@
 <template>
   <div class="rokka-gallery-overlay--container">
-    <div class="rokka-gallery-overlay--close-button">
-      <Button @click="emit('close')" :title="$t('overlay.close')">
+    <div class="rokka-gallery-overlay--header">
+      <Button @click="emit('close')" :title="$t('overlay.close')" class="rokka-gallery-overlay--close-button">
         <Close aria-hidden="true" />
       </Button>
     </div>
@@ -38,7 +38,7 @@ const closeOnEscape = (event: KeyboardEvent) => {
 
 :root {
   --rokka-gallery-overlay--z-index: 1000;
-  --rokka-gallery-overlay--bg-color: rgb(0 0 0 / 0.95);
+  --rokka-gallery-overlay--bg-color: rgb(0, 0, 0, 0.95);
   --rokka-gallery-overlay--text-color: #ffffff;
 }
 
@@ -57,19 +57,19 @@ const closeOnEscape = (event: KeyboardEvent) => {
     background-color: var(--rokka-gallery-overlay--bg-color);
     color: var(--rokka-gallery-overlay--text-color);
 
-    padding: 1rem 0 3rem;
+    padding: 2rem 0;
     @include screen-md {
-      padding: 1rem 3rem 5rem;
+      padding: 2.5rem 1rem;
     }
   }
 
-  &--close-button {
+  &--header {
+    margin-bottom: 1rem;
     text-align: right;
-    padding: 1rem;
+  }
 
-    @include screen-md {
-      padding: 1.5rem;
-    }
+  &--close-button {
+    padding: 0 1.5rem;
   }
 
   &--inner-container {

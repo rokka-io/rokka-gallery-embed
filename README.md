@@ -10,10 +10,11 @@ You can embed any rokka gallery in your site with the following snippet:
 
 ```html
 <script
-    src="/rokka-gallery.js"
-    data-lang="de"
-    data-organization="your-rokka-organization"
-    data-album="your-album"
+  async
+  src="https://embed.rokka.io/v1/rokka-gallery.js"
+  data-lang="de"
+  data-organization="your-organization"
+  data-album="your-album"
 ></script>
 ```
 
@@ -39,7 +40,18 @@ document.addEventListener('rokkagallery.open', rokkaOverlayOpened)
 document.addEventListener('rokkagallery.close', rokkaOverlayClosed)
 ```
 
-You can use them for example to restrict scrolling or tabbing on your page while the user has opened Rokka Gallery.
+For example, you can restrict scrolling or tabbing on your page while the user has Rokka Gallery open.
+
+### Styles
+
+You may wish to adjust the style of the embed on your page. We provide the following CSS properties on `:root`
+
+|                       Property                      |             Default Value             |
+|:---------------------------------------------------:|:-------------------------------------:|
+|           `—rokka-gallery-overlay—z-index`          |                 `1000`                |
+|          `—rokka-gallery-overlay—bg-color`          |          `rgb(0, 0, 0, 0.95)`         |
+|         `—rokka-gallery-overlay—text-color`         |               `#ffffff`               |
+|    `—rokka-gallery-carousel-image-item—bg-color`    |       `rgb(255, 255, 255, 0.05)`      |
 
 ## Development
 

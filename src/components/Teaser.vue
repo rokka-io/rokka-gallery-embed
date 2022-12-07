@@ -14,7 +14,11 @@
       />
     </div>
     <div class="rokka-gallery-teaser--footer">
-      <Button @click="emit('openOverview')" :tabindex="teaserTabIndex">
+      <Button
+        @click="emit('openOverview')"
+        :tabindex="teaserTabIndex"
+        class="rokka-gallery-teaser--open-overview"
+      >
         {{ $t('teaser.openOverview') }}
       </Button>
       <a
@@ -53,23 +57,36 @@ const emit = defineEmits(['openImage', 'openOverview']);
 </script>
 
 <style lang="scss">
+@import '@/scss/_mediaqueries.scss';
+
 .rokka-gallery-teaser {
   &--images {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
     margin-bottom: 1rem;
+
+    grid-template-columns: repeat(2, 1fr);
+    @include screen-sm {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   &--footer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &--open-overview {
+    margin: 0.25rem 1rem 0.25rem 0;
   }
 
   &--attribution {
     display: flex;
     align-items: center;
+    font-size: 0.75rem;
+    margin: 0.25rem 0;
 
     > svg {
       flex-shrink: 0;
