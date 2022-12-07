@@ -57,9 +57,14 @@ defineExpose({ prev, next, currentSlide });
 // so it takes up the max space available
 const imageHeight = ref<number>(0);
 const sizer = ref<HTMLDivElement | null>();
-const setSize = () => (imageHeight.value = sizer.value?.clientHeight ?? 0);
+const setSize = () => {
+  imageHeight.value = sizer.value?.clientHeight ?? 0;
+};
 
-onMounted(() => setSize() && addEventListener('resize', setSize));
+onMounted(() => {
+  setSize();
+  addEventListener('resize', setSize);
+});
 onUnmounted(() => removeEventListener('resize', setSize));
 </script>
 

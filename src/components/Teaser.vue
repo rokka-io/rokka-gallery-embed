@@ -61,11 +61,11 @@ const emit = defineEmits(['openImage', 'openOverview']);
 
 .rokka-gallery-teaser {
   &--images {
+    margin-bottom: 0.5rem;
     display: grid;
-    gap: 1rem;
-    margin-bottom: 1rem;
-
+    gap: 0.75rem;
     grid-template-columns: repeat(2, 1fr);
+
     @include screen-sm {
       grid-template-columns: repeat(4, 1fr);
     }
