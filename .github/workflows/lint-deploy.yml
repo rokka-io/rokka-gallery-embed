@@ -46,6 +46,14 @@ jobs:
           aws_bucket: ${{ secrets.S3_BUCKET }}
           source_dir: 'dist'
           destination_dir: 'dev'
+      - name: Invalidate CloudFront cache
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+          PATHS: '/dev/rokka-gallery.js'
+          AWS_REGION: ${{ secrets.S3_BUCKET_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
   deploy-to-production:
     name: Deploy to production
@@ -74,3 +82,11 @@ jobs:
           aws_bucket: ${{ secrets.S3_BUCKET }}
           source_dir: 'dist'
           destination_dir: 'v1'
+      - name: Invalidate CloudFront cache
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+          PATHS: '/v1/rokka-gallery.js'
+          AWS_REGION: ${{ secrets.S3_BUCKET_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
