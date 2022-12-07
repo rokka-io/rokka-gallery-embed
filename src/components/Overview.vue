@@ -49,7 +49,7 @@ const emit = defineEmits(['openImage']);
 .rokka-gallery-overview {
   &--image-grid {
     display: grid;
-    gap: 1rem;
+    gap: 0.75rem;
     padding: 0 1.5rem;
 
     grid-template-columns: repeat(2, 1fr);

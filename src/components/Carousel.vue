@@ -141,12 +141,13 @@ const downloadButtonTabIndex = (item: Image) =>
   }
 
   &--header {
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
+    margin-bottom: 0.75rem;
   }
 
   &--back-to-overview {
+    display: flex;
+    align-items: center;
+
     > svg {
       flex-shrink: 0;
       margin-right: 0.5rem;
