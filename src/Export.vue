@@ -1,8 +1,8 @@
 <template>
   <Suspense>
     <Gallery
-      :organization="organization"
-      :album-name="album"
+      :organization="organization.trim()"
+      :album-name="album.trim()"
       class="rokka-gallery"
     />
   </Suspense>
